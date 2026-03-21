@@ -1,0 +1,70 @@
+.page { padding: 3rem 0 4rem; }
+.quizContainer { max-width: 700px; margin: 0 auto; }
+.progressBar {
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.progressFill {
+  height: 100%;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+.stepInfo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.stepCount { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+.backBtn { font-size: 0.85rem; color: var(--text-secondary); cursor: pointer; transition: color var(--transition-fast); }
+.backBtn:hover { color: var(--accent-primary); }
+.questionBlock { text-align: center; margin-bottom: 2.5rem; animation: fadeIn 0.5s ease; }
+.question { font-family: var(--font-display); font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 700; margin-bottom: 0.5rem; }
+.questionSub { color: var(--text-secondary); font-size: 0.95rem; }
+.options { display: flex; flex-direction: column; gap: 0.75rem; animation: fadeInUp 0.5s ease; }
+.optionCard {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: left;
+  width: 100%;
+}
+.optionCard:hover { border-color: var(--accent-primary); transform: translateX(8px); }
+.optionCardActive { border-color: var(--accent-primary); background: var(--accent-gradient-soft); }
+.optionIcon { font-size: 2rem; flex-shrink: 0; }
+.optionText { display: flex; flex-direction: column; gap: 0.2rem; }
+.optionText strong { font-size: 1rem; }
+.optionText span { font-size: 0.85rem; color: var(--text-secondary); }
+.resultHeader { text-align: center; margin-bottom: 2rem; }
+.resultIcon { font-size: 3rem; display: block; margin-bottom: 1rem; animation: float 3s ease-in-out infinite; }
+.resultProfile {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.resultProfile h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.75rem; }
+.profileTags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.profileTag {
+  padding: 0.35rem 0.75rem;
+  background: var(--accent-gradient-soft);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent-primary);
+  text-transform: capitalize;
+}
+.resultGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.resultActions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }

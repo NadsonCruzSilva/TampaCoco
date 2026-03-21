@@ -1,0 +1,43 @@
+.page {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.05) 0%, transparent 50%);
+}
+.container { width: 100%; max-width: 440px; }
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+}
+.header { text-align: center; margin-bottom: 2rem; }
+.icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+.title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.35rem; }
+.subtitle { color: var(--text-secondary); font-size: 0.9rem; }
+.socialButtons { display: flex; flex-direction: column; gap: 0.75rem; }
+.socialBtn {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.75rem; background: var(--bg-tertiary);
+  border: 1px solid var(--border-color); border-radius: var(--radius-md);
+  font-size: 0.9rem; font-weight: 500;
+  cursor: pointer; transition: all var(--transition-fast); width: 100%;
+}
+.socialBtn:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
+.socialBtn span { font-weight: 800; font-size: 1.1rem; }
+.divider {
+  display: flex; align-items: center; gap: 1rem;
+  margin: 1.5rem 0; color: var(--text-muted); font-size: 0.8rem;
+}
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
+.form { display: flex; flex-direction: column; gap: 1rem; }
+.formGroup { display: flex; flex-direction: column; gap: 0.35rem; }
+.formGroup label { font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; }
+.forgotRow { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
+.checkbox { display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); cursor: pointer; }
+.checkbox input { accent-color: var(--accent-primary); }
+.forgotLink { color: var(--accent-primary); font-weight: 500; }
+.switchText { text-align: center; font-size: 0.85rem; color: var(--text-secondary); margin-top: 1.5rem; }
+.switchBtn { color: var(--accent-primary); font-weight: 600; margin-left: 0.25rem; cursor: pointer; font-size: 0.85rem; }

@@ -1,0 +1,83 @@
+.page { padding: 2rem 0 4rem; }
+.header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+.searchBox { width: 300px; }
+.layout { display: grid; grid-template-columns: 260px 1fr; gap: 2rem; }
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 90px;
+  align-self: flex-start;
+}
+.filterSection {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+.filterTitle {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+.filterOptions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.filterBtn {
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.filterBtn:hover { border-color: var(--accent-primary); color: var(--text-primary); }
+.filterBtnActive {
+  background: var(--accent-gradient-soft);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+.priceInputs { display: flex; align-items: center; gap: 0.5rem; }
+.priceInputs input { width: 80px; padding: 0.5rem; font-size: 0.8rem; }
+.priceInputs span { color: var(--text-muted); font-size: 0.8rem; }
+.results { min-height: 400px; }
+.sortBar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.sortLabel { font-size: 0.85rem; color: var(--text-secondary); }
+.sortSelect {
+  padding: 0.5rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+.empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+.empty h3 { margin: 1rem 0 0.5rem; font-size: 1.2rem; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .filters { position: static; }
+  .searchBox { width: 100%; }
+}

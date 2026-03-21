@@ -1,0 +1,59 @@
+.page { padding: 3rem 0 4rem; }
+.header { text-align: center; margin-bottom: 3rem; }
+.icon { font-size: 3rem; display: block; margin-bottom: 1rem; }
+.story { margin-bottom: 3rem; }
+.storyCard {
+  background: var(--accent-gradient-soft);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.storyCard h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+.storyCard p { color: var(--text-secondary); font-size: 1rem; line-height: 1.8; max-width: 700px; margin: 0 auto; }
+.values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.valueCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+  transition: all var(--transition-base);
+}
+.valueCard:hover { border-color: var(--accent-primary); transform: translateY(-4px); }
+.valueIcon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+.valueCard h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+.valueCard p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+.contact {
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+}
+.contact h2 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; text-align: center; }
+.contact > p { color: var(--text-secondary); font-size: 0.9rem; text-align: center; margin-bottom: 1.5rem; }
+.contactForm { display: flex; flex-direction: column; gap: 1rem; }
+.formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.formGroup { display: flex; flex-direction: column; gap: 0.35rem; }
+.formGroup label { font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; }
+.channels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.channelCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+  transition: all var(--transition-base);
+}
+.channelCard:hover { border-color: var(--accent-primary); transform: translateY(-4px); }
+.channelCard span { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+.channelCard h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+.channelCard p { font-size: 0.8rem; color: var(--text-secondary); }
+@media (max-width: 768px) {
+  .values { grid-template-columns: 1fr; }
+  .formRow { grid-template-columns: 1fr; }
+  .channels { grid-template-columns: 1fr; }
+}
