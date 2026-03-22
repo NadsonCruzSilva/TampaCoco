@@ -1,4 +1,4 @@
-# 🏍️ HELMETO — E-commerce de Capacetes para Motociclistas
+# 🏍️ TampaCoco — E-commerce de Capacetes para Motociclistas
 
 E-commerce moderno para venda de capacetes de motocicleta, construído com **Next.js 14**, **React 18** e **CSS Modules**.
 
