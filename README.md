@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏍️ HELMETO — E-commerce de Capacetes para Motociclistas
 
-## Getting Started
+E-commerce moderno para venda de capacetes de motocicleta, construído com **Next.js 14**, **React 18** e **CSS Modules**.
 
-First, run the development server:
+## ✨ Funcionalidades
+
+- **Catálogo de Produtos** — navegação e filtragem de capacetes
+- **Página de Produto** — detalhes, imagens e especificações
+- **Carrinho de Compras** — adicionar, remover e atualizar itens
+- **Checkout** — fluxo de finalização de pedido
+- **HelmGuide** — quiz interativo para ajudar na escolha do capacete ideal
+- **HelmSize** — calculadora de tamanho de capacete
+- **Certificações (HelmSafe)** — informações sobre certificações de segurança
+- **Comparador** — comparação lado a lado entre capacetes
+- **Blog** — artigos e conteúdos sobre o universo motociclista
+- **FAQ** — perguntas frequentes
+- **Sobre** — página institucional
+- **Login / Cadastro** — autenticação de usuários
+- **Conta** — área do usuário
+
+## 🛠️ Tecnologias
+
+| Tecnologia | Versão |
+|---|---|
+| Next.js | 14.2.35 |
+| React | 18.x |
+| Node.js | ≥ 18 |
+| CSS Modules | — |
+| ESLint | 8.x |
+
+## 📁 Estrutura do Projeto
+
+```
+site/
+├── src/
+│   ├── app/                  # Rotas e páginas (App Router)
+│   │   ├── page.js           # Página inicial (Home)
+│   │   ├── layout.js         # Layout raiz
+│   │   ├── globals.css       # Estilos globais
+│   │   ├── blog/             # Página do blog
+│   │   ├── carrinho/         # Página do carrinho
+│   │   ├── catalogo/         # Catálogo de produtos
+│   │   ├── certificacoes/    # Certificações de segurança
+│   │   ├── checkout/         # Finalização de compra
+│   │   ├── comparador/       # Comparador de capacetes
+│   │   ├── conta/            # Área do usuário
+│   │   ├── faq/              # Perguntas frequentes
+│   │   ├── helmguide/        # Quiz de escolha de capacete
+│   │   ├── helmsize/         # Calculadora de tamanho
+│   │   ├── login/            # Login e cadastro
+│   │   ├── produto/          # Página de detalhe do produto
+│   │   └── sobre/            # Página institucional
+│   ├── components/           # Componentes reutilizáveis
+│   │   ├── Header.jsx        # Cabeçalho / Navegação
+│   │   ├── Footer.jsx        # Rodapé
+│   │   └── ProductCard.jsx   # Card de produto
+│   ├── context/              # Contextos do React (ex: CartContext)
+│   └── data/                 # Dados estáticos (produtos, certificações, etc.)
+├── public/                   # Arquivos estáticos
+├── package.json
+├── next.config.mjs
+└── jsconfig.json
+```
+
+## 🚀 Como Rodar o Projeto
+
+### Pré-requisitos
+
+- [Node.js](https://nodejs.org/) versão **18 ou superior**
+- [npm](https://www.npmjs.com/) (já incluso com o Node.js) ou outro gerenciador de pacotes (yarn, pnpm, bun)
+- [Git](https://git-scm.com/)
+
+### 1. Clonar o repositório
+
+```bash
+git clone <url-do-repositório>
+cd capacete/site
+```
+
+### 2. Instalar as dependências
+
+```bash
+npm install
+```
+
+### 3. Rodar o servidor de desenvolvimento
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse [http://localhost:3000](http://localhost:3000) no navegador para ver a aplicação.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+> A página atualiza automaticamente conforme você edita os arquivos.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Gerar build de produção
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 5. Rodar a versão de produção localmente
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 6. Rodar o linter (verificação de código)
 
-## Deploy on Vercel
+```bash
+npm run lint
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📜 Scripts Disponíveis
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Comando | Descrição |
+|---|---|
+| `npm run dev` | Inicia o servidor de desenvolvimento |
+| `npm run build` | Gera o build de produção otimizado |
+| `npm run start` | Inicia o servidor de produção (requer build) |
+| `npm run lint` | Executa o ESLint para verificação de código |
+
+## 🚢 Deploy
+
+A forma mais simples de fazer deploy é pela [Vercel](https://vercel.com/), a plataforma criada pelos mesmos desenvolvedores do Next.js.
+
+Consulte a [documentação de deploy do Next.js](https://nextjs.org/docs/app/building-your-application/deploying) para mais detalhes.
+
+## 📚 Saiba Mais
+
+- [Documentação do Next.js](https://nextjs.org/docs) — recursos e API do Next.js
+- [Tutorial Interativo do Next.js](https://nextjs.org/learn) — aprenda Next.js na prática
+- [Repositório do Next.js no GitHub](https://github.com/vercel/next.js)
