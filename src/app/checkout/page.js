@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
-import { Banknote, CreditCard, CreditCard as Debit, FileText, Check } from 'lucide-react';
+import { Banknote, CreditCard, CreditCard as Debit, FileText, Check, Loader2 } from 'lucide-react';
 import styles from './checkout.module.css';
 
 export default function CheckoutPage() {
@@ -10,6 +10,52 @@ export default function CheckoutPage() {
   const [step, setStep] = useState(1);
   const formatPrice = (p) => p.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   const steps = ['Endereço', 'Frete', 'Pagamento', 'Revisão'];
+
+  // Address state
+  const [cep, setCep] = useState('');
+  const [rua, setRua] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [cidade, setCidade] = useState('');
+  const [estado, setEstado] = useState('');
+  const [numero, setNumero] = useState('');
+  const [complemento, setComplemento] = useState('');
+  const [cepLoading, setCepLoading] = useState(false);
+  const [cepError, setCepError] = useState('');
+
+  const formatCep = (value) => {
+    const digits = value.replace(/\D/g, '').slice(0, 8);
+    if (digits.length > 5) return `${digits.slice(0, 5)}-${digits.slice(5)}`;
+    return digits;
+  };
+
+  const handleCepChange = async (e) => {
+    const formatted = formatCep(e.target.value);
+    setCep(formatted);
+    setCepError('');
+
+    const digits = formatted.replace(/\D/g, '');
+    if (digits.length === 8) {
+      setCepLoading(true);
+      try {
+        const res = await fetch(`https://viacep.com.br/ws/${digits}/json/`);
+        const data = await res.json();
+        if (data.erro) {
+          setCepError('CEP não encontrado');
+          setRua(''); setBairro(''); setCidade(''); setEstado('');
+        } else {
+          setRua(data.logradouro || '');
+          setBairro(data.bairro || '');
+          setCidade(data.localidade || '');
+          setEstado(data.uf || '');
+          setCepError('');
+        }
+      } catch {
+        setCepError('Erro ao buscar CEP');
+      } finally {
+        setCepLoading(false);
+      }
+    }
+  };
 
   if (items.length === 0) {
     return (
@@ -41,13 +87,52 @@ export default function CheckoutPage() {
                 <div className={styles.formGrid}>
                   <div className={styles.formGroup}><label>Nome completo</label><input className="input" placeholder="Seu nome" /></div>
                   <div className={styles.formGroup}><label>CPF</label><input className="input" placeholder="000.000.000-00" /></div>
-                  <div className={styles.formGroup}><label>CEP</label><input className="input" placeholder="00000-000" /></div>
-                  <div className={styles.formGroup}><label>Rua</label><input className="input" placeholder="Rua, avenida..." /></div>
-                  <div className={styles.formGroup}><label>Número</label><input className="input" placeholder="123" /></div>
-                  <div className={styles.formGroup}><label>Complemento</label><input className="input" placeholder="Apto, bloco..." /></div>
-                  <div className={styles.formGroup}><label>Bairro</label><input className="input" placeholder="Bairro" /></div>
-                  <div className={styles.formGroup}><label>Cidade</label><input className="input" placeholder="Cidade" /></div>
-                  <div className={styles.formGroup}><label>Estado</label><input className="input" placeholder="UF" /></div>
+                  <div className={styles.formGroup}>
+                    <label>CEP</label>
+                    <div style={{ position: 'relative' }}>
+                      <input
+                        className="input"
+                        placeholder="00000-000"
+                        value={cep}
+                        onChange={handleCepChange}
+                        style={cepError ? { borderColor: 'var(--accent-secondary)' } : {}}
+                      />
+                      {cepLoading && (
+                        <span style={{
+                          position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)',
+                          color: 'var(--accent-primary)', display: 'flex', animation: 'spin 1s linear infinite',
+                        }}>
+                          <Loader2 size={18} />
+                        </span>
+                      )}
+                    </div>
+                    {cepError && <span style={{ color: 'var(--accent-secondary)', fontSize: '0.75rem' }}>{cepError}</span>}
+                    {!cepError && rua && <span style={{ color: 'var(--success)', fontSize: '0.75rem' }}>✓ Endereço encontrado</span>}
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label>Rua</label>
+                    <input className="input" placeholder="Rua, avenida..." value={rua} onChange={(e) => setRua(e.target.value)} />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label>Número</label>
+                    <input className="input" placeholder="123" value={numero} onChange={(e) => setNumero(e.target.value)} />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label>Complemento</label>
+                    <input className="input" placeholder="Apto, bloco..." value={complemento} onChange={(e) => setComplemento(e.target.value)} />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label>Bairro</label>
+                    <input className="input" placeholder="Bairro" value={bairro} onChange={(e) => setBairro(e.target.value)} />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label>Cidade</label>
+                    <input className="input" placeholder="Cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label>Estado</label>
+                    <input className="input" placeholder="UF" value={estado} onChange={(e) => setEstado(e.target.value)} />
+                  </div>
                 </div>
                 <button className="btn btn-primary btn-lg" onClick={() => setStep(2)}>Continuar para Frete →</button>
               </div>

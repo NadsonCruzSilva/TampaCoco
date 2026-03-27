@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { CartProvider } from '@/context/CartContext';
 import { ThemeProvider } from '@/context/ThemeContext';
+import { AuthProvider } from '@/context/AuthContext';
 
 export const metadata = {
   title: 'Mundo dos Capacetes — Capacetes com Segurança e Recomendação Inteligente',
@@ -15,15 +16,18 @@ export default function RootLayout({ children }) {
     <html lang="pt-BR">
       <body>
         <ThemeProvider>
-          <CartProvider>
-            <Header />
-            <main style={{ paddingTop: '70px', minHeight: '100vh' }}>
-              {children}
-            </main>
-            <Footer />
-          </CartProvider>
+          <AuthProvider>
+            <CartProvider>
+              <Header />
+              <main style={{ paddingTop: '70px', minHeight: '100vh' }}>
+                {children}
+              </main>
+              <Footer />
+            </CartProvider>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
   );
 }
+
