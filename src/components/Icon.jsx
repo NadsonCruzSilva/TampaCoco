@@ -6,7 +6,7 @@ import {
   Mountain, Sprout, Trophy, Building2, Route, Flag, Package,
   Smile, Coins, Zap, Sparkles, Banknote, Gem, Crown, Award,
   Check, X, ChevronRight, Search, Filter, Heart, Minus, Plus,
-  Truck, RotateCcw, MapPin, Sun, Moon
+  Truck, RotateCcw, MapPin, Sun, Moon, FileText
 } from 'lucide-react';
 
 const Linkedin = ({ size = 24, strokeWidth = 2, className = '', ...props }) => (
@@ -61,5 +61,5 @@ export {
   Mountain, Sprout, Trophy, Building2, Route, Flag, Package,
   Smile, Coins, Zap, Sparkles, Banknote, Gem, Crown, Award,
   Check, X, ChevronRight, Search, Filter, Heart, Minus, Plus,
-  Truck, RotateCcw, MapPin, Sun, Moon, Linkedin
+  Truck, RotateCcw, MapPin, Sun, Moon, Linkedin, FileText
 };

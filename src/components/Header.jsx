@@ -5,14 +5,18 @@ import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { useTheme } from '@/context/ThemeContext';
 import { useAuth } from '@/context/AuthContext';
-import { Bike, ShoppingCart, User, Sun, Moon } from '@/components/Icon';
+import { useWishlist } from '@/context/WishlistContext';
+import { Bike, ShoppingCart, User, Sun, Moon, Heart, Search } from '@/components/Icon';
+import SearchModal from '@/components/SearchModal';
 import styles from './Header.module.css';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const { totalItems } = useCart();
+  const { totalFavorites } = useWishlist();
   const { theme, toggleTheme } = useTheme();
   const { user, logout } = useAuth();
   const router = useRouter();
@@ -72,6 +76,13 @@ export default function Header() {
           <div className={styles.actions}>
             <button
               className={styles.iconBtn}
+              onClick={() => setSearchOpen(true)}
+              aria-label="Buscar capacetes e artigos"
+            >
+              <Search size={18} />
+            </button>
+            <button
+              className={styles.iconBtn}
               onClick={toggleTheme}
               aria-label={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
             >
@@ -80,6 +91,10 @@ export default function Header() {
             <Link href="/carrinho" className={styles.iconBtn}>
               <ShoppingCart size={18} />
               {totalItems > 0 && <span className={styles.cartCount}>{totalItems}</span>}
+            </Link>
+            <Link href="/favoritos" className={styles.iconBtn}>
+              <Heart size={18} />
+              {totalFavorites > 0 && <span className={styles.cartCount}>{totalFavorites}</span>}
             </Link>
 
             {/* User area */}
@@ -164,6 +179,9 @@ export default function Header() {
           </Link>
         )}
       </div>
+
+      {/* Modals and Overlays */}
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

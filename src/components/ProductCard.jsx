@@ -1,8 +1,14 @@
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useWishlist } from '@/context/WishlistContext';
+import { Heart } from '@/components/Icon';
 import styles from './ProductCard.module.css';
 
 export default function ProductCard({ product }) {
+  const { isFavorite, toggleItem } = useWishlist();
+  const liked = isFavorite(product.id);
+
   const discount = product.oldPrice
     ? Math.round((1 - product.price / product.oldPrice) * 100)
     : null;
@@ -15,42 +21,52 @@ export default function ProductCard({ product }) {
     '☆'.repeat(5 - Math.ceil(product.rating));
 
   return (
-    <Link href={`/produto/${product.id}`} className={styles.productCard}>
-      <div className={styles.imageWrap}>
-        <Image 
-          src={product.image} 
-          alt={product.name} 
-          fill 
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          style={{ objectFit: 'contain', padding: '1.5rem' }} 
-        />
-        <div className={styles.badges}>
-          {product.certifications.map(cert => (
-            <span key={cert} className="badge badge-cert">{cert}</span>
-          ))}
-        </div>
-        {discount && (
-          <span className={styles.discount}>-{discount}%</span>
-        )}
-      </div>
-      <div className={styles.info}>
-        <span className={styles.brandName}>{product.brand}</span>
-        <h3 className={styles.productName}>{product.name}</h3>
-        <div className={styles.ratingRow}>
-          <span className="stars">{stars}</span>
-          <span className={styles.ratingValue}>{product.rating}</span>
-          <span className={styles.reviewCount}>({product.reviews})</span>
-        </div>
-        <div className={styles.priceRow}>
-          <span className={styles.price}>{formatPrice(product.price)}</span>
-          {product.oldPrice && (
-            <span className={styles.oldPrice}>{formatPrice(product.oldPrice)}</span>
+    <div className={styles.productCard}>
+      <button
+        className={`${styles.heartBtn} ${liked ? styles.heartBtnActive : ''}`}
+        onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleItem(product.id); }}
+        aria-label={liked ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+      >
+        <Heart size={18} fill={liked ? 'currentColor' : 'none'} />
+      </button>
+      <Link href={`/produto/${product.id}`} className={styles.cardLink}>
+        <div className={styles.imageWrap}>
+          <Image 
+            src={product.image} 
+            alt={product.name} 
+            fill 
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            style={{ objectFit: 'contain', padding: '1.5rem' }} 
+          />
+          <div className={styles.badges}>
+            {product.certifications.map(cert => (
+              <span key={cert} className="badge badge-cert">{cert}</span>
+            ))}
+          </div>
+          {discount && (
+            <span className={styles.discount}>-{discount}%</span>
           )}
         </div>
-        <span className={styles.installment}>
-          ou 12x de {formatPrice(product.price / 12)}
-        </span>
-      </div>
-    </Link>
+        <div className={styles.info}>
+          <span className={styles.brandName}>{product.brand}</span>
+          <h3 className={styles.productName}>{product.name}</h3>
+          <div className={styles.ratingRow}>
+            <span className="stars">{stars}</span>
+            <span className={styles.ratingValue}>{product.rating}</span>
+            <span className={styles.reviewCount}>({product.reviews})</span>
+          </div>
+          <div className={styles.priceRow}>
+            <span className={styles.price}>{formatPrice(product.price)}</span>
+            {product.oldPrice && (
+              <span className={styles.oldPrice}>{formatPrice(product.oldPrice)}</span>
+            )}
+          </div>
+          <span className={styles.installment}>
+            ou 12x de {formatPrice(product.price / 12)}
+          </span>
+        </div>
+      </Link>
+    </div>
   );
 }
+

@@ -79,17 +79,25 @@ export default function Home() {
         <div className={styles.categories}>
           {types.map(type => (
             <Link key={type.id} href={`/catalogo?tipo=${type.id}`} className={styles.catCard}>
-              <div className={styles.catImageWrapper}>
-                <Image
-                  src={`/types/${type.id}.png`}
-                  alt={type.name}
-                  fill
-                  sizes="140px"
-                  style={{ objectFit: 'contain' }}
-                />
+              <div className={styles.catCardInner}>
+                <div className={styles.catCardFront}>
+                  <div className={styles.catImageWrapper}>
+                    <Image
+                      src={`/types/${type.id}.png`}
+                      alt={type.name}
+                      fill
+                      sizes="140px"
+                      style={{ objectFit: 'contain' }}
+                    />
+                  </div>
+                  <h3 className={styles.catName}>{type.name}</h3>
+                </div>
+                <div className={styles.catCardBack}>
+                  <h3 className={styles.catNameBack}>{type.name}</h3>
+                  <p className={styles.catDesc}>{type.description}</p>
+                  <span className={styles.catBtn}>Ver modelos →</span>
+                </div>
               </div>
-              <h3 className={styles.catName}>{type.name}</h3>
-              <p className={styles.catDesc}>{type.description}</p>
             </Link>
           ))}
         </div>

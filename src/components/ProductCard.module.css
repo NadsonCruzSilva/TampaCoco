@@ -6,6 +6,7 @@
   transition: all var(--transition-base);
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .productCard:hover {
@@ -13,6 +14,45 @@
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+}
+
+.heartBtn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.25s ease;
+}
+
+.heartBtn:hover {
+  border-color: var(--accent-secondary);
+  color: var(--accent-secondary);
+  transform: scale(1.1);
+}
+
+.heartBtnActive {
+  color: var(--accent-secondary);
+  background: rgba(239, 68, 68, 0.1);
+  border-color: var(--accent-secondary);
+}
+
 
 .imageWrap {
   position: relative;

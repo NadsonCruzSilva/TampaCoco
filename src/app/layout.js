@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import { CartProvider } from '@/context/CartContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { AuthProvider } from '@/context/AuthContext';
+import { WishlistProvider } from '@/context/WishlistContext';
 
 export const metadata = {
   title: 'Mundo dos Capacetes — Capacetes com Segurança e Recomendação Inteligente',
@@ -17,13 +18,15 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeProvider>
           <AuthProvider>
-            <CartProvider>
-              <Header />
-              <main style={{ paddingTop: '70px', minHeight: '100vh' }}>
-                {children}
-              </main>
-              <Footer />
-            </CartProvider>
+            <WishlistProvider>
+              <CartProvider>
+                <Header />
+                <main style={{ paddingTop: '70px', minHeight: '100vh' }}>
+                  {children}
+                </main>
+                <Footer />
+              </CartProvider>
+            </WishlistProvider>
           </AuthProvider>
         </ThemeProvider>
       </body>
