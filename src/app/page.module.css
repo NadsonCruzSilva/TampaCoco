@@ -113,23 +113,79 @@
 .categories {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
 }
 .catCard {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 2rem 1.5rem;
+  border-radius: var(--radius-xl);
+  padding: 3rem 1.5rem;
   text-align: center;
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-decoration: none;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
-.catCard:hover { border-color: var(--border-hover); transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.catIcon { font-size: 3rem; margin-bottom: 1rem; display: block; }
-.catName { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
-.catDesc { font-size: 0.85rem; color: var(--text-secondary); }
+
+.catCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--accent-gradient-soft);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.catCard:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.catCard:hover::before {
+  opacity: 1;
+}
+
+.catCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+.catImageWrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 1.5rem;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.catCard:hover .catImageWrapper {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.catName {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.catCard:hover .catName {
+  color: var(--accent-primary);
+}
+
+.catDesc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
 .productGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));

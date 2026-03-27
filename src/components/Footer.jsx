@@ -36,6 +36,7 @@ export default function Footer() {
             <Link href="/certificacoes">Certificações</Link>
             <Link href="/comparador">Comparador</Link>
             <Link href="/blog">Blog</Link>
+            <Link href="/criadores">Os Criadores</Link>
           </div>
 
           <div className={styles.column}>
@@ -88,14 +89,14 @@ export default function Footer() {
                   Você pode salvar a foto que desejar na pasta /public/ como o nome attendant.jpg
                   e então alterar a propriedade src abaixo para "/attendant.jpg" (e usar a tag <Image> do Next).
                 */}
-                <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150&h=150" 
-                  alt="Foto do Atendente" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150&h=150"
+                  alt="Foto do Atendente"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               </div>
               <div className={styles.waInfo}>
-                <span className={styles.waName}>Thiago - Atendimento</span>
+                <span className={styles.waName}>Jão - Atendimento</span>
                 <span className={styles.waStatus}>Online agora</span>
               </div>
               <button className={styles.waClose} onClick={() => setShowWa(false)} aria-label="Fechar">
@@ -104,9 +105,9 @@ export default function Footer() {
             </div>
             <div className={styles.waBody}>
               <p>Olá! Precisa de ajuda para escolher seu capacete ideal ou tem alguma dúvida?</p>
-              <a 
-                href="https://wa.me/5528999620129?text=Olá! Preciso de ajuda para escolher um capacete." 
-                target="_blank" 
+              <a
+                href="https://wa.me/5528999620129?text=Olá! Preciso de ajuda para escolher um capacete."
+                target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
                 style={{ width: '100%', marginTop: '1rem', display: 'flex', justifyContent: 'center', background: '#25d366', color: '#fff', border: 'none' }}

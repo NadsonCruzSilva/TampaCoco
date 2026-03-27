@@ -8,7 +8,7 @@ import styles from './page.module.css';
 
 const testimonials = [
   { name: "Ricardo M.", info: "Comprou Shoei X-Spirit III", text: "O HelmGuide me ajudou a encontrar o capacete perfeito pro meu perfil. A calculadora de tamanho acertou em cheio — zero trocas!" },
-  { name: "Ana Paula S.", info: "Comprou LS2 Valiant II", text: "Nunca tinha visto um e-commerce que explica as certificações tão bem. Me senti segura na compra pela primeira vez." },
+  { name: "Ana Paula Vadinho", info: "Comprou LS2 Valiant II", text: "Nunca tinha visto um e-commerce que explica as certificações tão bem. Me senti segura na compra pela primeira vez." },
   { name: "Carlos H.", info: "Comprou AGV K6 S", text: "Atendimento pelo WhatsApp foi rápido e personalizado. Tiraram todas as minhas dúvidas sobre certificação ECE." },
 ];
 
@@ -43,14 +43,14 @@ export default function Home() {
           </div>
           <div className={styles.heroVisual}>
             <div style={{ position: 'relative', width: '100%', height: '500px' }}>
-              <Image 
-                src="/hero.png" 
-                alt="Capacete de destaque" 
-                fill 
+              <Image
+                src="/hero.png"
+                alt="Capacete de destaque"
+                fill
                 priority
                 unoptimized
                 sizes="(max-width: 768px) 100vw, 50vw"
-                style={{ objectFit: 'contain', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.15))' }} 
+                style={{ objectFit: 'contain', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.15))' }}
               />
             </div>
           </div>
@@ -79,13 +79,13 @@ export default function Home() {
         <div className={styles.categories}>
           {types.map(type => (
             <Link key={type.id} href={`/catalogo?tipo=${type.id}`} className={styles.catCard}>
-              <div style={{ position: 'relative', width: '100px', height: '100px', margin: '0 auto 1rem' }}>
-                <Image 
-                  src={`/types/${type.id}.png`} 
-                  alt={type.name} 
-                  fill 
-                  sizes="100px"
-                  style={{ objectFit: 'contain' }} 
+              <div className={styles.catImageWrapper}>
+                <Image
+                  src={`/types/${type.id}.png`}
+                  alt={type.name}
+                  fill
+                  sizes="140px"
+                  style={{ objectFit: 'contain' }}
                 />
               </div>
               <h3 className={styles.catName}>{type.name}</h3>

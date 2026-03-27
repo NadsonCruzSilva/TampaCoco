@@ -6,8 +6,16 @@ import {
   Mountain, Sprout, Trophy, Building2, Route, Flag, Package,
   Smile, Coins, Zap, Sparkles, Banknote, Gem, Crown, Award,
   Check, X, ChevronRight, Search, Filter, Heart, Minus, Plus,
-  Truck, RotateCcw, MapPin, Sun, Moon,
+  Truck, RotateCcw, MapPin, Sun, Moon
 } from 'lucide-react';
+
+const Linkedin = ({ size = 24, strokeWidth = 2, className = '', ...props }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className} {...props}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+    <rect width="4" height="12" x="2" y="9"/>
+    <circle cx="4" cy="4" r="2"/>
+  </svg>
+);
 
 const Instagram = ({ size = 24, strokeWidth = 2, className = '', ...props }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className} {...props}>
@@ -37,7 +45,7 @@ const iconMap = {
   Mountain, Sprout, Trophy, Building2, Route, Flag, Package,
   Smile, Coins, Zap, Sparkles, Banknote, Gem, Crown, Award,
   Check, X, ChevronRight, Search, Filter, Heart, Minus, Plus,
-  Truck, RotateCcw, MapPin, Sun, Moon,
+  Truck, RotateCcw, MapPin, Sun, Moon, Linkedin
 };
 
 export default function Icon({ name, size = 20, className = '', strokeWidth = 2, ...props }) {
@@ -53,5 +61,5 @@ export {
   Mountain, Sprout, Trophy, Building2, Route, Flag, Package,
   Smile, Coins, Zap, Sparkles, Banknote, Gem, Crown, Award,
   Check, X, ChevronRight, Search, Filter, Heart, Minus, Plus,
-  Truck, RotateCcw, MapPin, Sun, Moon,
+  Truck, RotateCcw, MapPin, Sun, Moon, Linkedin
 };
