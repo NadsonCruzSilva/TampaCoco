@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { getRecommendedSize, measurementSteps } from '@/data/sizeChart';
+import { Ruler, Lightbulb, Zap, Check, AlertTriangle } from 'lucide-react';
 import styles from './helmsize.module.css';
 
 export default function HelmSizePage() {
@@ -17,7 +18,7 @@ export default function HelmSizePage() {
     <div className={styles.page}>
       <div className="container">
         <div className={styles.header}>
-          <span className={styles.icon}>📐</span>
+          <span className={styles.icon}><Ruler size={36} strokeWidth={1.5} /></span>
           <h1 className="section-title">HelmSize — Calculadora de Tamanho</h1>
           <p className="section-subtitle">
             Descubra o tamanho ideal para cada marca. Cada fabricante tem sua própria tabela!
@@ -65,7 +66,7 @@ export default function HelmSizePage() {
             </h2>
             {result.isBorderline && (
               <div className={styles.borderlineAlert}>
-                ⚠️ Sua medida está em zona limítrofe entre dois tamanhos. Recomendamos o tamanho maior para conforto.
+                <AlertTriangle size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.3rem' }} /> Sua medida está em zona limítrofe entre dois tamanhos. Recomendamos o tamanho maior para conforto.
               </div>
             )}
             <div className={styles.resultTable}>
@@ -80,7 +81,7 @@ export default function HelmSizePage() {
                   <span className={styles.brandName}>{brand}</span>
                   <span className={styles.sizeValue}>{data.size}</span>
                   <span className={styles.rangeValue}>{data.range} cm</span>
-                  <span className={styles.noteValue}>{data.borderline ? '⚡️ Zona limítrofe' : '✓ Ideal'}</span>
+                  <span className={styles.noteValue}>{data.borderline ? <><Zap size={14} style={{ display: 'inline', verticalAlign: 'middle' }} /> Zona limítrofe</> : <><Check size={14} style={{ display: 'inline', verticalAlign: 'middle' }} /> Ideal</>}</span>
                 </div>
               ))}
             </div>
@@ -88,7 +89,7 @@ export default function HelmSizePage() {
         )}
 
         <div className={styles.tips}>
-          <h2 className={styles.tipsTitle}>💡 Dicas Importantes</h2>
+          <h2 className={styles.tipsTitle}><Lightbulb size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.3rem' }} /> Dicas Importantes</h2>
           <div className={styles.tipsGrid}>
             <div className={styles.tipCard}>
               <strong>Capacete novo aperta?</strong>

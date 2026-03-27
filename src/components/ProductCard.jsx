@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './ProductCard.module.css';
 
 export default function ProductCard({ product }) {
@@ -16,7 +17,13 @@ export default function ProductCard({ product }) {
   return (
     <Link href={`/produto/${product.id}`} className={styles.productCard}>
       <div className={styles.imageWrap}>
-        <span className={styles.placeholder}>🪖</span>
+        <Image 
+          src={product.image} 
+          alt={product.name} 
+          fill 
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          style={{ objectFit: 'contain', padding: '1.5rem' }} 
+        />
         <div className={styles.badges}>
           {product.certifications.map(cert => (
             <span key={cert} className="badge badge-cert">{cert}</span>

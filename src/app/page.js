@@ -1,12 +1,15 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ProductCard from '@/components/ProductCard';
+import Icon from '@/components/Icon';
+import { ShieldCheck, Target, HardHat, Ruler, Star, User } from '@/components/Icon';
 import { getFeaturedProducts, types } from '@/data/products';
 import styles from './page.module.css';
 
 const testimonials = [
-  { name: "Ricardo M.", info: "Comprou Shoei X-Spirit III", text: "O HelmGuide me ajudou a encontrar o capacete perfeito pro meu perfil. A calculadora de tamanho acertou em cheio — zero trocas!", avatar: "🧑" },
-  { name: "Ana Paula S.", info: "Comprou LS2 Valiant II", text: "Nunca tinha visto um e-commerce que explica as certificações tão bem. Me senti segura na compra pela primeira vez.", avatar: "👩" },
-  { name: "Carlos H.", info: "Comprou AGV K6 S", text: "Atendimento pelo WhatsApp foi rápido e personalizado. Tiraram todas as minhas dúvidas sobre certificação ECE.", avatar: "👨" },
+  { name: "Ricardo M.", info: "Comprou Shoei X-Spirit III", text: "O HelmGuide me ajudou a encontrar o capacete perfeito pro meu perfil. A calculadora de tamanho acertou em cheio — zero trocas!" },
+  { name: "Ana Paula S.", info: "Comprou LS2 Valiant II", text: "Nunca tinha visto um e-commerce que explica as certificações tão bem. Me senti segura na compra pela primeira vez." },
+  { name: "Carlos H.", info: "Comprou AGV K6 S", text: "Atendimento pelo WhatsApp foi rápido e personalizado. Tiraram todas as minhas dúvidas sobre certificação ECE." },
 ];
 
 export default function Home() {
@@ -19,7 +22,9 @@ export default function Home() {
         <div className={styles.heroBg}></div>
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
-            <div className={styles.heroTag}>🛡️ Referência em Segurança</div>
+            <div className={styles.heroTag}>
+              <ShieldCheck size={16} /> Referência em Segurança
+            </div>
             <h1 className={styles.heroTitle}>
               O capacete certo faz <span>toda a diferença</span>
             </h1>
@@ -29,7 +34,7 @@ export default function Home() {
             </p>
             <div className={styles.heroBtns}>
               <Link href="/helmguide" className="btn btn-primary btn-lg">
-                🎯 Fazer o Quiz HelmGuide
+                <Target size={18} /> Fazer o Quiz HelmGuide
               </Link>
               <Link href="/catalogo" className="btn btn-secondary btn-lg">
                 Ver Catálogo →
@@ -37,7 +42,17 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.heroVisual}>
-            <span className={styles.heroHelmet}>🪖</span>
+            <div style={{ position: 'relative', width: '100%', height: '500px' }}>
+              <Image 
+                src="/hero.png" 
+                alt="Capacete de destaque" 
+                fill 
+                priority
+                unoptimized
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: 'contain', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.15))' }} 
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -64,7 +79,15 @@ export default function Home() {
         <div className={styles.categories}>
           {types.map(type => (
             <Link key={type.id} href={`/catalogo?tipo=${type.id}`} className={styles.catCard}>
-              <span className={styles.catIcon}>{type.icon}</span>
+              <div style={{ position: 'relative', width: '100px', height: '100px', margin: '0 auto 1rem' }}>
+                <Image 
+                  src={`/types/${type.id}.png`} 
+                  alt={type.name} 
+                  fill 
+                  sizes="100px"
+                  style={{ objectFit: 'contain' }} 
+                />
+              </div>
               <h3 className={styles.catName}>{type.name}</h3>
               <p className={styles.catDesc}>{type.description}</p>
             </Link>
@@ -92,7 +115,7 @@ export default function Home() {
         <p className="section-subtitle">Ferramentas exclusivas para você fazer a melhor escolha</p>
         <div className={styles.features}>
           <div className={styles.featureCard}>
-            <span className={styles.featureIcon}>🎯</span>
+            <span className={styles.featureIcon}><Target size={32} strokeWidth={1.5} /></span>
             <h3 className={styles.featureTitle}>HelmGuide</h3>
             <p className={styles.featureDesc}>
               Quiz inteligente que analisa seu perfil, uso e orçamento para recomendar os capacetes ideais.
@@ -100,7 +123,7 @@ export default function Home() {
             <Link href="/helmguide" className={styles.featureLink}>Fazer o quiz →</Link>
           </div>
           <div className={styles.featureCard}>
-            <span className={styles.featureIcon}>📐</span>
+            <span className={styles.featureIcon}><Ruler size={32} strokeWidth={1.5} /></span>
             <h3 className={styles.featureTitle}>HelmSize</h3>
             <p className={styles.featureDesc}>
               Calculadora de tamanho que mostra o tamanho ideal para cada marca. Chega de trocas por tamanho errado.
@@ -108,7 +131,7 @@ export default function Home() {
             <Link href="/helmsize" className={styles.featureLink}>Calcular tamanho →</Link>
           </div>
           <div className={styles.featureCard}>
-            <span className={styles.featureIcon}>🛡️</span>
+            <span className={styles.featureIcon}><ShieldCheck size={32} strokeWidth={1.5} /></span>
             <h3 className={styles.featureTitle}>HelmSafe</h3>
             <p className={styles.featureDesc}>
               Glossário visual de certificações: entenda o que cada selo garante e como verificar a autenticidade.
@@ -125,10 +148,12 @@ export default function Home() {
         <div className={styles.testimonials}>
           {testimonials.map((t, i) => (
             <div key={i} className={styles.testimonialCard}>
-              <div className={styles.testimonialStars}>★★★★★</div>
+              <div className={styles.testimonialStars}>
+                {[...Array(5)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}
+              </div>
               <p className={styles.testimonialText}>&ldquo;{t.text}&rdquo;</p>
               <div className={styles.testimonialAuthor}>
-                <div className={styles.testimonialAvatar}>{t.avatar}</div>
+                <div className={styles.testimonialAvatar}><User size={18} /></div>
                 <div>
                   <div className={styles.testimonialName}>{t.name}</div>
                   <div className={styles.testimonialInfo}>{t.info}</div>

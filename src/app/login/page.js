@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { Bike } from 'lucide-react';
 import styles from './login.module.css';
 
 export default function LoginPage() {
@@ -10,10 +11,10 @@ export default function LoginPage() {
       <div className={styles.container}>
         <div className={styles.card}>
           <div className={styles.header}>
-            <span className={styles.icon}>🏍️</span>
+            <span className={styles.icon}><Bike size={28} /></span>
             <h1 className={styles.title}>{isLogin ? 'Entrar' : 'Criar Conta'}</h1>
             <p className={styles.subtitle}>
-              {isLogin ? 'Acesse sua conta TampaCoco' : 'Crie sua conta e comece a comprar'}
+              {isLogin ? 'Acesse sua conta Mundo dos Capacetes' : 'Crie sua conta e comece a comprar'}
             </p>
           </div>
 

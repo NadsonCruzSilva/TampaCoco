@@ -4,7 +4,7 @@ export const certifications = [
     name: "INMETRO",
     fullName: "Instituto Nacional de Metrologia, Qualidade e Tecnologia",
     country: "Brasil",
-    icon: "🇧🇷",
+    icon: "Flag",
     color: "#22c55e",
     description: "Certificação obrigatória no Brasil para todos os capacetes vendidos no território nacional. O INMETRO verifica se o capacete atende à norma ABNT NBR 7471, que define requisitos mínimos de segurança como resistência ao impacto, sistema de retenção e campo de visão.",
     whatItGuarantees: [
@@ -23,7 +23,7 @@ export const certifications = [
     name: "DOT",
     fullName: "Department of Transportation",
     country: "Estados Unidos",
-    icon: "🇺🇸",
+    icon: "Flag",
     color: "#3b82f6",
     description: "Certificação do Departamento de Transporte dos EUA. É a certificação padrão americana e testa o capacete em condições de impacto mais rigorosas que muitas certificações básicas. Capacetes DOT passam por testes de laboratório independente.",
     whatItGuarantees: [
@@ -42,7 +42,7 @@ export const certifications = [
     name: "ECE 22.06",
     fullName: "Economic Commission for Europe (Regulamento 22.06)",
     country: "Europa / Internacional",
-    icon: "🇪🇺",
+    icon: "Flag",
     color: "#8b5cf6",
     description: "A mais recente versão da certificação europeia, adotada internacionalmente. O ECE 22.06 é mais rigoroso que seu predecessor (22.05) e inclui testes de impacto rotacional, tornando-o uma das certificações mais completas do mundo.",
     whatItGuarantees: [
@@ -61,7 +61,7 @@ export const certifications = [
     name: "SNELL M2020",
     fullName: "Snell Memorial Foundation",
     country: "Estados Unidos",
-    icon: "⭐",
+    icon: "Award",
     color: "#f59e0b",
     description: "Certificação voluntária da Snell Memorial Foundation, considerada uma das mais rigorosas do mundo. Os testes SNELL são mais exigentes que DOT e ECE em diversos parâmetros. Poucos capacetes no mercado possuem esta certificação.",
     whatItGuarantees: [
@@ -80,7 +80,7 @@ export const certifications = [
     name: "SHARP",
     fullName: "Safety Helmet Assessment and Rating Programme",
     country: "Reino Unido",
-    icon: "🇬🇧",
+    icon: "Flag",
     color: "#ef4444",
     description: "Programa britânico de avaliação e classificação de capacetes por estrelas (1 a 5). Diferente das outras certificações, o SHARP compra capacetes anonimamente no varejo e os testa — garantindo que o que o consumidor compra é o que foi testado.",
     whatItGuarantees: [

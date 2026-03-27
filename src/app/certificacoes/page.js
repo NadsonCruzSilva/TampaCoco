@@ -1,13 +1,27 @@
 'use client';
 import { certifications } from '@/data/certifications';
+import Icon from '@/components/Icon';
+import { ShieldCheck, Globe, Check, Search } from 'lucide-react';
 import styles from './certificacoes.module.css';
+
+function StarRating({ count }) {
+  return (
+    <span style={{ display: 'inline-flex', gap: '1px' }}>
+      {[...Array(count)].map((_, i) => (
+        <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-primary)" stroke="none">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+        </svg>
+      ))}
+    </span>
+  );
+}
 
 export default function CertificacoesPage() {
   return (
     <div className={styles.page}>
       <div className="container">
         <div className={styles.header}>
-          <span className={styles.icon}>🛡️</span>
+          <span className={styles.icon}><ShieldCheck size={36} strokeWidth={1.5} /></span>
           <h1 className="section-title">HelmSafe — Certificações de Segurança</h1>
           <p className="section-subtitle">
             Entenda o que cada selo garante e como verificar a autenticidade do seu capacete
@@ -29,7 +43,7 @@ export default function CertificacoesPage() {
           {certifications.map((cert) => (
             <div key={cert.id} className={styles.certCard} style={{ borderTopColor: cert.color }}>
               <div className={styles.certHeader}>
-                <span className={styles.certIcon}>{cert.icon}</span>
+                <span className={styles.certIcon}><Icon name={cert.icon} size={28} /></span>
                 <div>
                   <h2 className={styles.certName} style={{ color: cert.color }}>{cert.name}</h2>
                   <span className={styles.certFull}>{cert.fullName}</span>
@@ -38,14 +52,14 @@ export default function CertificacoesPage() {
               </div>
 
               <div className={styles.certMeta}>
-                <span>🌍 {cert.country}</span>
+                <span><Globe size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.25rem' }} />{cert.country}</span>
                 {cert.mandatory && <span className={styles.mandatory}>Obrigatório no Brasil</span>}
               </div>
 
               <p className={styles.certDescription}>{cert.description}</p>
 
               <div className={styles.certSection}>
-                <h3>✅ O que garante:</h3>
+                <h3><Check size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.25rem' }} /> O que garante:</h3>
                 <ul>
                   {cert.whatItGuarantees.map((item, i) => (
                     <li key={i}>{item}</li>
@@ -54,7 +68,7 @@ export default function CertificacoesPage() {
               </div>
 
               <div className={styles.certSection}>
-                <h3>🔍 Como verificar:</h3>
+                <h3><Search size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.25rem' }} /> Como verificar:</h3>
                 <p>{cert.howToVerify}</p>
               </div>
             </div>
@@ -72,18 +86,18 @@ export default function CertificacoesPage() {
               <span>Rigor Geral</span>
             </div>
             {[
-              { name: 'INMETRO', impact: '⭐⭐', pen: '⭐⭐', rot: '—', rigor: '⭐⭐' },
-              { name: 'DOT', impact: '⭐⭐⭐', pen: '⭐⭐⭐', rot: '—', rigor: '⭐⭐⭐' },
-              { name: 'ECE 22.06', impact: '⭐⭐⭐⭐', pen: '⭐⭐⭐', rot: '⭐⭐⭐⭐', rigor: '⭐⭐⭐⭐' },
-              { name: 'SNELL M2020', impact: '⭐⭐⭐⭐⭐', pen: '⭐⭐⭐⭐⭐', rot: '⭐⭐', rigor: '⭐⭐⭐⭐⭐' },
-              { name: 'SHARP', impact: '⭐⭐⭐⭐', pen: '⭐⭐⭐⭐', rot: '⭐⭐⭐', rigor: '⭐⭐⭐⭐' },
+              { name: 'INMETRO', impact: 2, pen: 2, rot: 0, rigor: 2 },
+              { name: 'DOT', impact: 3, pen: 3, rot: 0, rigor: 3 },
+              { name: 'ECE 22.06', impact: 4, pen: 3, rot: 4, rigor: 4 },
+              { name: 'SNELL M2020', impact: 5, pen: 5, rot: 2, rigor: 5 },
+              { name: 'SHARP', impact: 4, pen: 4, rot: 3, rigor: 4 },
             ].map((row, i) => (
               <div key={i} className={styles.compRow}>
                 <span className={styles.compName}>{row.name}</span>
-                <span>{row.impact}</span>
-                <span>{row.pen}</span>
-                <span>{row.rot}</span>
-                <span>{row.rigor}</span>
+                <span>{row.impact > 0 ? <StarRating count={row.impact} /> : '—'}</span>
+                <span>{row.pen > 0 ? <StarRating count={row.pen} /> : '—'}</span>
+                <span>{row.rot > 0 ? <StarRating count={row.rot} /> : '—'}</span>
+                <span>{row.rigor > 0 ? <StarRating count={row.rigor} /> : '—'}</span>
               </div>
             ))}
           </div>

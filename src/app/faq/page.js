@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { HelpCircle, MessageCircle, Mail } from 'lucide-react';
 import styles from './faq.module.css';
 
 const faqData = [
@@ -51,7 +52,7 @@ export default function FaqPage() {
     <div className={styles.page}>
       <div className="container">
         <div className={styles.header}>
-          <span className={styles.icon}>❓</span>
+          <span className={styles.icon}><HelpCircle size={36} strokeWidth={1.5} /></span>
           <h1 className="section-title">Central de Ajuda</h1>
           <p className="section-subtitle">Encontre respostas para as dúvidas mais frequentes</p>
         </div>
@@ -87,8 +88,8 @@ export default function FaqPage() {
           <h2>Não encontrou sua resposta?</h2>
           <p>Entre em contato com nossa equipe. Respondemos em até 2 horas no horário comercial.</p>
           <div className={styles.contactBtns}>
-            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener" className="btn btn-primary">💬 WhatsApp</a>
-            <a href="mailto:contato@helmeto.com.br" className="btn btn-secondary">📧 E-mail</a>
+            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener" className="btn btn-primary"><MessageCircle size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.3rem' }} /> WhatsApp</a>
+            <a href="mailto:contato@mundodoscapacetes.com.br" className="btn btn-secondary"><Mail size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.3rem' }} /> E-mail</a>
           </div>
         </div>
       </div>

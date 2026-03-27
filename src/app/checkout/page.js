@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
+import { Banknote, CreditCard, CreditCard as Debit, FileText, Check } from 'lucide-react';
 import styles from './checkout.module.css';
 
 export default function CheckoutPage() {
@@ -26,7 +27,7 @@ export default function CheckoutPage() {
         <div className={styles.stepper}>
           {steps.map((s, i) => (
             <div key={i} className={`${styles.stepItem} ${step > i ? styles.stepDone : ''} ${step === i + 1 ? styles.stepActive : ''}`}>
-              <div className={styles.stepCircle}>{step > i + 1 ? '✓' : i + 1}</div>
+              <div className={styles.stepCircle}>{step > i + 1 ? <Check size={14} /> : i + 1}</div>
               <span>{s}</span>
             </div>
           ))}
@@ -83,14 +84,14 @@ export default function CheckoutPage() {
                 <h2>Método de Pagamento</h2>
                 <div className={styles.paymentOptions}>
                   {[
-                    { icon: '💚', name: 'Pix', desc: '10% de desconto — aprovação instantânea' },
-                    { icon: '💳', name: 'Cartão de Crédito', desc: 'Até 12x sem juros' },
-                    { icon: '💳', name: 'Cartão de Débito', desc: 'Aprovação em até 1h' },
-                    { icon: '📄', name: 'Boleto Bancário', desc: 'Vencimento em 3 dias úteis' },
+                    { IconComp: Banknote, name: 'Pix', desc: '10% de desconto — aprovação instantânea' },
+                    { IconComp: CreditCard, name: 'Cartão de Crédito', desc: 'Até 12x sem juros' },
+                    { IconComp: Debit, name: 'Cartão de Débito', desc: 'Aprovação em até 1h' },
+                    { IconComp: FileText, name: 'Boleto Bancário', desc: 'Vencimento em 3 dias úteis' },
                   ].map((opt, i) => (
                     <label key={i} className={styles.paymentOption}>
                       <input type="radio" name="payment" defaultChecked={i === 0} />
-                      <span className={styles.paymentIcon}>{opt.icon}</span>
+                      <span className={styles.paymentIcon}><opt.IconComp size={20} /></span>
                       <div>
                         <strong>{opt.name}</strong>
                         <span>{opt.desc}</span>
@@ -123,7 +124,7 @@ export default function CheckoutPage() {
                 <div className={styles.stepButtons}>
                   <button className="btn btn-secondary" onClick={() => setStep(3)}>← Voltar</button>
                   <button className="btn btn-primary btn-lg" onClick={() => alert('Pedido confirmado! (simulação)')}>
-                    ✓ Confirmar Pedido
+                    <Check size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.3rem' }} /> Confirmar Pedido
                   </button>
                 </div>
               </div>

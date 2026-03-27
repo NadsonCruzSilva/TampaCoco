@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styles from './conta.module.css';
 
-export const metadata = { title: 'Minha Conta | TampaCoco' };
+export const metadata = { title: 'Minha Conta | Mundo dos Capacetes' };
 
 export default function ContaPage() {
   const mockUser = {

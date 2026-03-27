@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getProductById } from '@/data/products';
 import { getCertificationById } from '@/data/certifications';
 import { useCart } from '@/context/CartContext';
@@ -45,8 +46,8 @@ export default function ProductPage() {
 
         <div className={styles.layout}>
           <div className={styles.gallery}>
-            <div className={styles.mainImage}>
-              <span style={{ fontSize: '10rem', opacity: 0.3 }}>🪖</span>
+            <div className={styles.mainImage} style={{ position: 'relative', width: '100%', minHeight: '400px' }}>
+              <Image src={product.image} alt={product.name} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: 'contain', padding: '2rem' }} priority />
               {discount && <span className={styles.discountBadge}>-{discount}%</span>}
             </div>
           </div>

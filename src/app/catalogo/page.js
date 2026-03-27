@@ -1,11 +1,11 @@
 'use client';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import { products, types, brands } from '@/data/products';
 import styles from './catalogo.module.css';
 
-export default function CatalogoPage() {
+function CatalogoContent() {
   const searchParams = useSearchParams();
   const initialType = searchParams.get('tipo') || '';
 
@@ -166,5 +166,13 @@ export default function CatalogoPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CatalogoPage() {
+  return (
+    <Suspense fallback={<div className="container section">Carregando catálogo...</div>}>
+      <CatalogoContent />
+    </Suspense>
   );
 }

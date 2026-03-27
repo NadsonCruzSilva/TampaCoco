@@ -10,7 +10,7 @@
 }
 .stepActive .stepCircle { border-color: var(--accent-primary); background: var(--accent-gradient-soft); color: var(--accent-primary); }
 .stepActive { color: var(--text-primary); font-weight: 600; }
-.stepDone .stepCircle { background: var(--accent-primary); border-color: var(--accent-primary); color: #000; }
+.stepDone .stepCircle { background: var(--accent-primary); border-color: var(--accent-primary); color: var(--btn-accent-text); }
 .layout { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; align-items: start; }
 .formArea { min-height: 400px; }
 .stepContent {

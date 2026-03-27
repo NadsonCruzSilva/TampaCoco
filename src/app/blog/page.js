@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { blogPosts } from '@/data/blog';
 import styles from './blog.module.css';
 
 export const metadata = {
-  title: 'Blog HelmSafe — Dicas e Segurança | TampaCoco',
+  title: 'Blog HelmSafe — Dicas e Segurança | Mundo dos Capacetes',
   description: 'Artigos sobre segurança, certificações, guias de compra e dicas para motociclistas.',
 };
 
@@ -20,8 +21,8 @@ export default function BlogPage() {
         <div className={styles.grid}>
           {blogPosts.map((post, i) => (
             <Link key={post.id} href={`/blog/${post.slug}`} className={`${styles.postCard} ${i === 0 ? styles.featured : ''}`}>
-              <div className={styles.postImage}>
-                <span style={{ fontSize: '3rem', opacity: 0.3 }}>📰</span>
+              <div className={styles.postImage} style={{ position: 'relative', width: '100%', minHeight: '200px' }}>
+                <Image src={post.image} alt={post.title} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
               </div>
               <div className={styles.postInfo}>
                 <div className={styles.postMeta}>

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { quizSteps } from '@/data/quiz';
 import { products } from '@/data/products';
 import ProductCard from '@/components/ProductCard';
+import Icon from '@/components/Icon';
+import { Target, RefreshCw } from '@/components/Icon';
 import styles from './helmguide.module.css';
 
 export default function HelmGuidePage() {
@@ -56,7 +58,7 @@ export default function HelmGuidePage() {
       <div className={styles.page}>
         <div className="container">
           <div className={styles.resultHeader}>
-            <span className={styles.resultIcon}>🎯</span>
+            <span className={styles.resultIcon}><Target size={40} strokeWidth={1.5} /></span>
             <h1 className="section-title">Suas Recomendações</h1>
             <p className="section-subtitle">
               Com base no seu perfil, selecionamos os melhores capacetes para você
@@ -77,7 +79,7 @@ export default function HelmGuidePage() {
           </div>
 
           <div className={styles.resultActions}>
-            <button onClick={restart} className="btn btn-secondary">🔄 Refazer Quiz</button>
+            <button onClick={restart} className="btn btn-secondary"><RefreshCw size={16} /> Refazer Quiz</button>
             <Link href="/catalogo" className="btn btn-primary">Ver todo o catálogo →</Link>
           </div>
         </div>
@@ -114,7 +116,7 @@ export default function HelmGuidePage() {
                 className={`${styles.optionCard} ${answers[keys[currentStep]] === opt.value ? styles.optionCardActive : ''}`}
                 onClick={() => handleSelect(opt.value)}
               >
-                <span className={styles.optionIcon}>{opt.icon}</span>
+                <span className={styles.optionIcon}><Icon name={opt.icon} size={24} /></span>
                 <div className={styles.optionText}>
                   <strong>{opt.label}</strong>
                   <span>{opt.description}</span>

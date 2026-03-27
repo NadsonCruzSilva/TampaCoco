@@ -7,7 +7,7 @@ export const blogPosts = [
     category: "Guias",
     date: "2026-03-15",
     readTime: "8 min",
-    image: "/blog/guide.svg",
+    image: "/blog/guide.png",
     content: `Escolher um capacete pode parecer simples, mas é uma decisão que envolve segurança, conforto e estilo. Neste guia, vamos explorar todos os fatores que você deve considerar.
 
 ## Tipos de Capacete
@@ -40,7 +40,7 @@ Um capacete deve ficar justo mas confortável. Use nossa calculadora HelmSize pa
     category: "Segurança",
     date: "2026-03-10",
     readTime: "6 min",
-    image: "/blog/certifications.svg"
+    image: "/blog/certifications.png"
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ Um capacete deve ficar justo mas confortável. Use nossa calculadora HelmSize pa
     category: "Segurança",
     date: "2026-03-05",
     readTime: "5 min",
-    image: "/blog/replace.svg"
+    image: "/blog/replace.png"
   },
   {
     id: 4,
@@ -60,7 +60,7 @@ Um capacete deve ficar justo mas confortável. Use nossa calculadora HelmSize pa
     category: "Guias",
     date: "2026-02-28",
     readTime: "7 min",
-    image: "/blog/beginner.svg"
+    image: "/blog/beginner.png"
   },
   {
     id: 5,
@@ -70,7 +70,7 @@ Um capacete deve ficar justo mas confortável. Use nossa calculadora HelmSize pa
     category: "Dicas",
     date: "2026-02-20",
     readTime: "4 min",
-    image: "/blog/measure.svg"
+    image: "/blog/measure.png"
   },
   {
     id: 6,
@@ -80,7 +80,7 @@ Um capacete deve ficar justo mas confortável. Use nossa calculadora HelmSize pa
     category: "Dicas",
     date: "2026-02-15",
     readTime: "5 min",
-    image: "/blog/cleaning.svg"
+    image: "/blog/cleaning.png"
   }
 ];
 

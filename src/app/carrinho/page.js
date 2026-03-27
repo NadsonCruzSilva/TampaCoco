@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
+import { ShoppingCart, HardHat, Banknote } from 'lucide-react';
 import styles from './carrinho.module.css';
 
 export default function CarrinhoPage() {
@@ -12,7 +13,7 @@ export default function CarrinhoPage() {
       <div className={styles.page}>
         <div className="container">
           <div className={styles.empty}>
-            <span style={{ fontSize: '4rem' }}>🛒</span>
+            <ShoppingCart size={48} strokeWidth={1} style={{ opacity: 0.4 }} />
             <h1>Seu carrinho está vazio</h1>
             <p>Explore nosso catálogo e encontre o capacete ideal para você!</p>
             <Link href="/catalogo" className="btn btn-primary btn-lg" style={{ marginTop: '1rem' }}>Ver Catálogo</Link>
@@ -33,7 +34,7 @@ export default function CarrinhoPage() {
             {items.map((item, i) => (
               <div key={`${item.id}-${item.color}-${item.size}`} className={styles.cartItem}>
                 <div className={styles.itemImage}>
-                  <span style={{ fontSize: '2.5rem', opacity: 0.3 }}>🪖</span>
+                  <HardHat size={32} strokeWidth={1} style={{ opacity: 0.3 }} />
                 </div>
                 <div className={styles.itemInfo}>
                   <span className={styles.itemBrand}>{item.brand}</span>
@@ -74,7 +75,7 @@ export default function CarrinhoPage() {
               <span>Total</span>
               <span className={styles.totalPrice}>{formatPrice(totalPrice)}</span>
             </div>
-            <span className={styles.pixPrice}>💚 {formatPrice(totalPrice * 0.9)} no Pix (10% off)</span>
+            <span className={styles.pixPrice}><Banknote size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.25rem' }} /> {formatPrice(totalPrice * 0.9)} no Pix (10% off)</span>
 
             <Link href="/checkout" className="btn btn-primary btn-lg" style={{ width: '100%', marginTop: '1rem' }}>
               Ir para o Checkout →

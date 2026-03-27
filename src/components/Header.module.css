@@ -19,10 +19,11 @@
 }
 
 .headerScrolled {
-  background: rgba(10, 10, 15, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--header-scrolled-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
 }
 
 .logo {
@@ -156,7 +157,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 10, 15, 0.95);
+  background: var(--mobile-menu-bg);
   backdrop-filter: blur(20px);
   z-index: 999;
   padding: 5rem 2rem 2rem;

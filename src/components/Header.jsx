@@ -2,12 +2,15 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
+import { useTheme } from '@/context/ThemeContext';
+import { Bike, ShoppingCart, User, Sun, Moon } from '@/components/Icon';
 import styles from './Header.module.css';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { totalItems } = useCart();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -29,8 +32,8 @@ export default function Header() {
       <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
         <div className={styles.headerInner}>
           <Link href="/" className={styles.logo}>
-            <span className={styles.logoIcon}>🏍️</span>
-            <span className={styles.logoText}>TampaCoco</span>
+            <span className={styles.logoIcon}><Bike size={20} /></span>
+            <span className={styles.logoText}>Mundo dos Capacetes</span>
           </Link>
 
           <nav className={styles.nav}>
@@ -42,12 +45,19 @@ export default function Header() {
           </nav>
 
           <div className={styles.actions}>
+            <button
+              className={styles.iconBtn}
+              onClick={toggleTheme}
+              aria-label={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
+            >
+              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
             <Link href="/carrinho" className={styles.iconBtn}>
-              🛒
+              <ShoppingCart size={18} />
               {totalItems > 0 && <span className={styles.cartCount}>{totalItems}</span>}
             </Link>
             <Link href="/login" className={styles.iconBtn}>
-              👤
+              <User size={18} />
             </Link>
             <button
               className={styles.menuToggle}
@@ -75,10 +85,12 @@ export default function Header() {
           </Link>
         ))}
         <Link href="/carrinho" className={styles.mobileNavLink} onClick={() => setMobileOpen(false)}>
-          🛒 Carrinho {totalItems > 0 && `(${totalItems})`}
+          <ShoppingCart size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.5rem' }} />
+          Carrinho {totalItems > 0 && `(${totalItems})`}
         </Link>
         <Link href="/login" className={styles.mobileNavLink} onClick={() => setMobileOpen(false)}>
-          👤 Minha Conta
+          <User size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.5rem' }} />
+          Minha Conta
         </Link>
       </div>
     </>

@@ -4,9 +4,9 @@ export const quizSteps = [
     question: "Qual é o seu nível de experiência como motociclista?",
     subtitle: "Isso nos ajuda a recomendar capacetes adequados ao seu perfil",
     options: [
-      { value: "iniciante", label: "Iniciante", description: "Menos de 1 ano pilotando", icon: "🌱" },
-      { value: "intermediario", label: "Intermediário", description: "1 a 3 anos de experiência", icon: "🏍️" },
-      { value: "experiente", label: "Experiente", description: "Mais de 3 anos pilotando", icon: "🏆" }
+      { value: "iniciante", label: "Iniciante", description: "Menos de 1 ano pilotando", icon: "Sprout" },
+      { value: "intermediario", label: "Intermediário", description: "1 a 3 anos de experiência", icon: "Bike" },
+      { value: "experiente", label: "Experiente", description: "Mais de 3 anos pilotando", icon: "Trophy" }
     ]
   },
   {
@@ -14,11 +14,11 @@ export const quizSteps = [
     question: "Como você usa a sua moto no dia a dia?",
     subtitle: "O tipo de uso influencia diretamente no capacete ideal",
     options: [
-      { value: "urbano", label: "Urbano / Cidade", description: "Trabalho, faculdade, dia a dia", icon: "🏙️" },
-      { value: "viagem", label: "Viagens e Touring", description: "Estradas e longas distâncias", icon: "🛣️" },
-      { value: "esportivo", label: "Esportivo / Pista", description: "Track days e pilotagem esportiva", icon: "🏁" },
-      { value: "trilha", label: "Trilha / Off-Road", description: "Trilhas, motocross e aventura", icon: "🏔️" },
-      { value: "motoboy", label: "Motoboy / Uso Intenso", description: "Entregas e uso profissional", icon: "📦" }
+      { value: "urbano", label: "Urbano / Cidade", description: "Trabalho, faculdade, dia a dia", icon: "Building2" },
+      { value: "viagem", label: "Viagens e Touring", description: "Estradas e longas distâncias", icon: "Route" },
+      { value: "esportivo", label: "Esportivo / Pista", description: "Track days e pilotagem esportiva", icon: "Flag" },
+      { value: "trilha", label: "Trilha / Off-Road", description: "Trilhas, motocross e aventura", icon: "Mountain" },
+      { value: "motoboy", label: "Motoboy / Uso Intenso", description: "Entregas e uso profissional", icon: "Package" }
     ]
   },
   {
@@ -26,11 +26,11 @@ export const quizSteps = [
     question: "O que é mais importante para você?",
     subtitle: "Selecione sua principal prioridade",
     options: [
-      { value: "seguranca", label: "Máxima Segurança", description: "Certificações internacionais e proteção premium", icon: "🛡️" },
-      { value: "conforto", label: "Conforto", description: "Leve, ventilado e confortável para uso prolongado", icon: "😌" },
-      { value: "custo-beneficio", label: "Custo-Benefício", description: "Boa proteção com preço justo", icon: "💰" },
-      { value: "tecnologia", label: "Tecnologia", description: "Bluetooth, visores avançados, materiais de ponta", icon: "⚡" },
-      { value: "estilo", label: "Estilo e Design", description: "Visual diferenciado e acabamento premium", icon: "✨" }
+      { value: "seguranca", label: "Máxima Segurança", description: "Certificações internacionais e proteção premium", icon: "ShieldCheck" },
+      { value: "conforto", label: "Conforto", description: "Leve, ventilado e confortável para uso prolongado", icon: "Smile" },
+      { value: "custo-beneficio", label: "Custo-Benefício", description: "Boa proteção com preço justo", icon: "Coins" },
+      { value: "tecnologia", label: "Tecnologia", description: "Bluetooth, visores avançados, materiais de ponta", icon: "Zap" },
+      { value: "estilo", label: "Estilo e Design", description: "Visual diferenciado e acabamento premium", icon: "Sparkles" }
     ]
   },
   {
@@ -38,10 +38,10 @@ export const quizSteps = [
     question: "Qual é o seu orçamento?",
     subtitle: "Temos opções para todos os bolsos",
     options: [
-      { value: "economico", label: "Até R$ 500", description: "Opções acessíveis com certificação INMETRO", icon: "💵" },
-      { value: "intermediario", label: "R$ 500 a R$ 1.500", description: "Bom custo-benefício com mais recursos", icon: "💳" },
-      { value: "premium", label: "R$ 1.500 a R$ 3.000", description: "Capacetes premium com certificações internacionais", icon: "💎" },
-      { value: "top", label: "Acima de R$ 3.000", description: "O melhor do mercado sem compromisso", icon: "👑" }
+      { value: "economico", label: "Até R$ 500", description: "Opções acessíveis com certificação INMETRO", icon: "Banknote" },
+      { value: "intermediario", label: "R$ 500 a R$ 1.500", description: "Bom custo-benefício com mais recursos", icon: "CreditCard" },
+      { value: "premium", label: "R$ 1.500 a R$ 3.000", description: "Capacetes premium com certificações internacionais", icon: "Gem" },
+      { value: "top", label: "Acima de R$ 3.000", description: "O melhor do mercado sem compromisso", icon: "Crown" }
     ]
   }
 ];

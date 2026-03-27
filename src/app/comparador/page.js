@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { products } from '@/data/products';
+import { Scale, HardHat, Star, MapPin } from 'lucide-react';
 import styles from './comparador.module.css';
 
 export default function ComparadorPage() {
@@ -20,7 +21,7 @@ export default function ComparadorPage() {
     <div className={styles.page}>
       <div className="container">
         <div className={styles.header}>
-          <span className={styles.icon}>⚖️</span>
+          <span className={styles.icon}><Scale size={36} strokeWidth={1.5} /></span>
           <h1 className="section-title">Comparador de Capacetes</h1>
           <p className="section-subtitle">Selecione até 3 capacetes para comparar lado a lado</p>
         </div>
@@ -40,7 +41,7 @@ export default function ComparadorPage() {
               </select>
               {selected[i] && (
                 <div className={styles.selectedPreview}>
-                  <span style={{ fontSize: '3rem', opacity: 0.3 }}>🪖</span>
+                  <HardHat size={36} strokeWidth={1} style={{ opacity: 0.3 }} />
                   <strong>{selected[i].name}</strong>
                   <span className={styles.previewPrice}>{formatPrice(selected[i].price)}</span>
                 </div>
@@ -69,7 +70,7 @@ export default function ComparadorPage() {
             </div>
             <div className={styles.compRow}>
               <div className={styles.compLabel}>Avaliação</div>
-              {activeProducts.map(p => <div key={p.id} className={styles.compValue}>⭐ {p.rating} ({p.reviews})</div>)}
+              {activeProducts.map(p => <div key={p.id} className={styles.compValue}><Star size={14} fill="var(--accent-primary)" stroke="var(--accent-primary)" style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.25rem' }} />{p.rating} ({p.reviews})</div>)}
             </div>
             <div className={styles.compRow}>
               <div className={styles.compLabel}>Certificações</div>
@@ -118,7 +119,7 @@ export default function ComparadorPage() {
 
         {activeProducts.length < 2 && (
           <div className={styles.emptyState}>
-            <span style={{ fontSize: '3rem' }}>⚖️</span>
+            <Scale size={36} strokeWidth={1.5} />
             <h3>Selecione pelo menos 2 capacetes para comparar</h3>
             <p>Use os seletores acima para escolher os capacetes que deseja comparar lado a lado.</p>
           </div>

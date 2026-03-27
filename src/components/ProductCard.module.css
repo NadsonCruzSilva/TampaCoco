@@ -10,8 +10,8 @@
 
 .productCard:hover {
   border-color: var(--border-hover);
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 .imageWrap {

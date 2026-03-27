@@ -18,7 +18,7 @@
   background: var(--accent-gradient);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-weight: 800; color: #000;
+  font-weight: 800; color: var(--btn-accent-text);
   margin: 0 auto 1rem;
   font-size: 1.1rem;
 }

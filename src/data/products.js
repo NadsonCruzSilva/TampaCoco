@@ -9,8 +9,8 @@ export const products = [
     oldPrice: 4299.90,
     rating: 4.9,
     reviews: 127,
-    image: "/products/helmet-1.svg",
-    images: ["/products/helmet-1.svg", "/products/helmet-1b.svg", "/products/helmet-1c.svg"],
+    image: "/products/helmet-1.png",
+    images: ["/products/helmet-1.png", "/products/helmet-1b.png", "/products/helmet-1c.png"],
     certifications: ["INMETRO", "DOT", "SNELL", "ECE"],
     colors: [
       { name: "Preto Fosco", hex: "#1a1a1a" },
@@ -37,8 +37,8 @@ export const products = [
     oldPrice: null,
     rating: 4.8,
     reviews: 89,
-    image: "/products/helmet-2.svg",
-    images: ["/products/helmet-2.svg"],
+    image: "/products/helmet-2.png",
+    images: ["/products/helmet-2.png"],
     certifications: ["INMETRO", "DOT", "ECE"],
     colors: [
       { name: "Preto Brilhante", hex: "#0a0a0a" },
@@ -64,8 +64,8 @@ export const products = [
     oldPrice: 1599.90,
     rating: 4.5,
     reviews: 203,
-    image: "/products/helmet-3.svg",
-    images: ["/products/helmet-3.svg"],
+    image: "/products/helmet-3.png",
+    images: ["/products/helmet-3.png"],
     certifications: ["INMETRO", "ECE"],
     colors: [
       { name: "Cinza Titanium", hex: "#6b7280" },
@@ -92,8 +92,8 @@ export const products = [
     oldPrice: null,
     rating: 4.7,
     reviews: 56,
-    image: "/products/helmet-4.svg",
-    images: ["/products/helmet-4.svg"],
+    image: "/products/helmet-4.png",
+    images: ["/products/helmet-4.png"],
     certifications: ["INMETRO", "DOT", "SNELL"],
     colors: [
       { name: "Preto Brilhante", hex: "#0a0a0a" },
@@ -120,8 +120,8 @@ export const products = [
     oldPrice: 2199.90,
     rating: 4.6,
     reviews: 78,
-    image: "/products/helmet-5.svg",
-    images: ["/products/helmet-5.svg"],
+    image: "/products/helmet-5.png",
+    images: ["/products/helmet-5.png"],
     certifications: ["INMETRO", "DOT", "ECE"],
     colors: [
       { name: "Preto/Amarelo", hex: "#eab308" },
@@ -147,8 +147,8 @@ export const products = [
     oldPrice: 699.90,
     rating: 4.3,
     reviews: 412,
-    image: "/products/helmet-6.svg",
-    images: ["/products/helmet-6.svg"],
+    image: "/products/helmet-6.png",
+    images: ["/products/helmet-6.png"],
     certifications: ["INMETRO"],
     colors: [
       { name: "Preto Fosco", hex: "#1a1a1a" },
@@ -175,8 +175,8 @@ export const products = [
     oldPrice: null,
     rating: 4.7,
     reviews: 65,
-    image: "/products/helmet-7.svg",
-    images: ["/products/helmet-7.svg"],
+    image: "/products/helmet-7.png",
+    images: ["/products/helmet-7.png"],
     certifications: ["INMETRO", "DOT", "ECE", "SHARP"],
     colors: [
       { name: "Preto Carbono", hex: "#171717" },
@@ -202,8 +202,8 @@ export const products = [
     oldPrice: 3299.90,
     rating: 4.8,
     reviews: 94,
-    image: "/products/helmet-8.svg",
-    images: ["/products/helmet-8.svg"],
+    image: "/products/helmet-8.png",
+    images: ["/products/helmet-8.png"],
     certifications: ["INMETRO", "DOT", "ECE", "SHARP"],
     colors: [
       { name: "Preto/Prata", hex: "#404040" },
@@ -229,8 +229,8 @@ export const products = [
     oldPrice: 249.90,
     rating: 4.0,
     reviews: 856,
-    image: "/products/helmet-9.svg",
-    images: ["/products/helmet-9.svg"],
+    image: "/products/helmet-9.png",
+    images: ["/products/helmet-9.png"],
     certifications: ["INMETRO"],
     colors: [
       { name: "Preto Fosco", hex: "#1a1a1a" },
@@ -258,8 +258,8 @@ export const products = [
     oldPrice: null,
     rating: 4.5,
     reviews: 143,
-    image: "/products/helmet-10.svg",
-    images: ["/products/helmet-10.svg"],
+    image: "/products/helmet-10.png",
+    images: ["/products/helmet-10.png"],
     certifications: ["INMETRO", "DOT", "ECE"],
     colors: [
       { name: "Preto/Camo", hex: "#374151" },
@@ -285,8 +285,8 @@ export const products = [
     oldPrice: null,
     rating: 4.6,
     reviews: 37,
-    image: "/products/helmet-11.svg",
-    images: ["/products/helmet-11.svg"],
+    image: "/products/helmet-11.png",
+    images: ["/products/helmet-11.png"],
     certifications: ["INMETRO", "ECE"],
     colors: [
       { name: "Carbon", hex: "#262626" },
@@ -312,8 +312,8 @@ export const products = [
     oldPrice: 399.90,
     rating: 4.2,
     reviews: 291,
-    image: "/products/helmet-12.svg",
-    images: ["/products/helmet-12.svg"],
+    image: "/products/helmet-12.png",
+    images: ["/products/helmet-12.png"],
     certifications: ["INMETRO"],
     colors: [
       { name: "Preto Fosco", hex: "#1a1a1a" },
@@ -333,10 +333,10 @@ export const products = [
 ];
 
 export const types = [
-  { id: "full-face", name: "Full-Face", icon: "🏍️", description: "Proteção total para rosto e queixo" },
-  { id: "modular", name: "Modular", icon: "🔄", description: "Versatilidade de abrir e fechar" },
-  { id: "aberto", name: "Aberto", icon: "💨", description: "Liberdade com proteção essencial" },
-  { id: "offroad", name: "Off-Road", icon: "🏔️", description: "Para trilhas e aventuras" }
+  { id: "full-face", name: "Full-Face", icon: "Bike", description: "Proteção total para rosto e queixo" },
+  { id: "modular", name: "Modular", icon: "RefreshCw", description: "Versatilidade de abrir e fechar" },
+  { id: "aberto", name: "Aberto", icon: "Wind", description: "Liberdade com proteção essencial" },
+  { id: "offroad", name: "Off-Road", icon: "Mountain", description: "Para trilhas e aventuras" }
 ];
 
 export const brands = ["Shoei", "AGV", "LS2", "Arai", "Fox", "Norisk", "HJC", "Shark", "Pro Tork", "Bell", "Nexx", "Peels"];

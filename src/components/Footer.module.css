@@ -54,8 +54,8 @@
 }
 
 .socialBtn:hover {
-  border-color: var(--accent-primary);
-  transform: translateY(-2px);
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
 }
 
 .column h4 {
@@ -111,13 +111,13 @@
   border-radius: var(--radius-md);
   font-weight: 600;
   font-size: 0.85rem;
-  color: #000;
+  color: var(--btn-accent-text);
   transition: all var(--transition-fast);
 }
 
 .newsletterBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 .bottom {
@@ -198,5 +198,141 @@
 @media (max-width: 480px) {
   .footerGrid {
     grid-template-columns: 1fr;
+  }
+}
+
+.waPopup {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 320px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  z-index: 1000;
+  overflow: hidden;
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: bottom right;
+}
+
+.waContainer {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+}
+
+.waHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+.waAvatar {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #25d366;
+  background: var(--bg-tertiary);
+}
+
+.waInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.waName {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.waStatus {
+  font-size: 0.8rem;
+  color: #25d366;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.2rem;
+  font-weight: 500;
+}
+
+.waStatus::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(37, 211, 102, 0.6);
+}
+
+.waClose {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  transition: color var(--transition-fast);
+}
+
+.waClose:hover {
+  color: var(--error);
+}
+
+.waBody {
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.whatsapp {
+  width: 64px;
+  height: 64px;
+  background: #25d366;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: white;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  cursor: pointer;
+  transition: all var(--transition-spring);
+  animation: float 3s ease-in-out infinite;
+  display: block;
+  margin-left: auto;
+}
+
+.whatsapp:hover {
+  transform: scale(1.08) translateY(-4px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
+}
+
+@media (max-width: 480px) {
+  .waContainer {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .waPopup {
+    width: calc(100vw - 2rem);
+    bottom: 80px;
+    right: 0;
   }
 }
