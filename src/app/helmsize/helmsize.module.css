@@ -99,8 +99,8 @@
 @media (max-width: 768px) {
   .steps { grid-template-columns: repeat(2, 1fr); }
   .tipsGrid { grid-template-columns: 1fr; }
-  .tableHeader, .tableRow { grid-template-columns: 1fr 0.8fr 1fr; }
-  .noteValue { display: none; }
+  .resultTable { overflow-x: auto; display: block; }
+  .tableHeader, .tableRow { min-width: 500px; }
 }
 @media (max-width: 480px) {
   .steps { grid-template-columns: 1fr; }

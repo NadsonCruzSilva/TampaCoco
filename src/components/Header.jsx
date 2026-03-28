@@ -82,7 +82,7 @@ export default function Header() {
               <Search size={18} />
             </button>
             <button
-              className={styles.iconBtn}
+              className={`${styles.iconBtn} ${styles.hideOnMobile}`}
               onClick={toggleTheme}
               aria-label={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
             >
@@ -92,14 +92,13 @@ export default function Header() {
               <ShoppingCart size={18} />
               {totalItems > 0 && <span className={styles.cartCount}>{totalItems}</span>}
             </Link>
-            <Link href="/favoritos" className={styles.iconBtn}>
+            <Link href="/favoritos" className={`${styles.iconBtn} ${styles.hideOnMobile}`}>
               <Heart size={18} />
               {totalFavorites > 0 && <span className={styles.cartCount}>{totalFavorites}</span>}
             </Link>
 
-            {/* User area */}
             {user ? (
-              <div className={styles.userArea} ref={userMenuRef}>
+              <div className={`${styles.userArea} ${styles.hideOnMobile}`} ref={userMenuRef}>
                 <button
                   className={styles.userAvatar}
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
@@ -124,7 +123,7 @@ export default function Header() {
                 )}
               </div>
             ) : (
-              <Link href="/login" className={styles.iconBtn}>
+              <Link href="/login" className={`${styles.iconBtn} ${styles.hideOnMobile}`}>
                 <User size={18} />
               </Link>
             )}
@@ -158,6 +157,18 @@ export default function Header() {
           <ShoppingCart size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.5rem' }} />
           Carrinho {totalItems > 0 && `(${totalItems})`}
         </Link>
+        <Link href="/favoritos" className={styles.mobileNavLink} onClick={() => setMobileOpen(false)}>
+          <Heart size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.5rem' }} />
+          Favoritos {totalFavorites > 0 && `(${totalFavorites})`}
+        </Link>
+        <button 
+          className={styles.mobileNavLink} 
+          onClick={() => { toggleTheme(); setMobileOpen(false); }}
+          style={{ textAlign: 'left', background: 'none', border: 'none', padding: '0.75rem 0', cursor: 'pointer', fontFamily: 'inherit' }}
+        >
+          {theme === 'light' ? <Moon size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.5rem' }} /> : <Sun size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.5rem' }} />}
+          Modo {theme === 'light' ? 'Escuro' : 'Claro'}
+        </button>
         {user ? (
           <>
             <div className={styles.mobileNavLink} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>

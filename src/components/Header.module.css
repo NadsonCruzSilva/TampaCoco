@@ -159,10 +159,11 @@
   bottom: 0;
   background: var(--mobile-menu-bg);
   backdrop-filter: blur(20px);
-  z-index: 999;
+  z-index: 1001;
   padding: 5rem 2rem 2rem;
   flex-direction: column;
   gap: 1.5rem;
+  overflow-y: auto;
 }
 
 .mobileMenuOpen {
@@ -320,6 +321,38 @@
 
   .menuToggle {
     display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .actions {
+    gap: 0.5rem;
+  }
+  
+  .iconBtn, .menuToggle {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  
+  .userAvatar {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .logoIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+  }
+  
+  .hideOnMobile {
+    display: none !important;
   }
 }
 

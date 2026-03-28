@@ -78,6 +78,20 @@
 .empty h3 { margin: 1rem 0 0.5rem; font-size: 1.2rem; }
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
-  .filters { position: static; }
+  .filters { position: static; flex-direction: row; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 0.5rem; }
+  .filterSection { min-width: 200px; }
   .searchBox { width: 100%; }
+}
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
+@media (max-width: 480px) {
+  .header { flex-direction: column; align-items: stretch; }
+  .filters { flex-direction: column; }
+  .filterSection { min-width: 100%; }
+  .sortBar { flex-direction: column; align-items: flex-start; }
+  .sortSelect { width: 100%; }
 }

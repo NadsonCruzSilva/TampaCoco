@@ -61,7 +61,6 @@
 @media (max-width: 768px) {
   .certHeader { flex-direction: column; align-items: flex-start; }
   .certLevel { margin-left: 0; }
-  .compHeader, .compRow { grid-template-columns: 1.2fr 1fr 1fr; }
-  .compHeader span:nth-child(4), .compRow span:nth-child(4),
-  .compHeader span:nth-child(5), .compRow span:nth-child(5) { display: none; }
+  .compTable { overflow-x: auto; }
+  .compHeader, .compRow { min-width: 600px; }
 }

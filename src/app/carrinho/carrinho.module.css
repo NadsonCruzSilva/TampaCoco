@@ -67,3 +67,10 @@
   .summary { position: static; }
   .cartItem { flex-wrap: wrap; }
 }
+@media (max-width: 480px) {
+  .cartItem { flex-direction: column; align-items: flex-start; position: relative; gap: 1rem; }
+  .itemImage { width: 100%; height: 180px; }
+  .itemInfo { width: 100%; }
+  .itemPrice { text-align: left; margin-top: 0.5rem; }
+  .removeBtn { position: absolute; top: 0.5rem; right: 0.5rem; background: var(--bg-card); border-radius: 50%; box-shadow: var(--shadow-sm); z-index: 2; }
+}
