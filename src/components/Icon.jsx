@@ -6,8 +6,11 @@ import {
   Mountain, Sprout, Trophy, Building2, Route, Flag, Package,
   Smile, Coins, Zap, Sparkles, Banknote, Gem, Crown, Award,
   Check, X, ChevronRight, Search, Filter, Heart, Minus, Plus,
-  Truck, RotateCcw, MapPin, Sun, Moon, FileText
+  Truck, RotateCcw, MapPin, Sun, Moon, FileText,
+  Home, LayoutGrid
 } from 'lucide-react';
+
+const Grid = LayoutGrid;
 
 const Linkedin = ({ size = 24, strokeWidth = 2, className = '', ...props }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className} {...props}>
@@ -45,7 +48,7 @@ const iconMap = {
   Mountain, Sprout, Trophy, Building2, Route, Flag, Package,
   Smile, Coins, Zap, Sparkles, Banknote, Gem, Crown, Award,
   Check, X, ChevronRight, Search, Filter, Heart, Minus, Plus,
-  Truck, RotateCcw, MapPin, Sun, Moon, Linkedin
+  Truck, RotateCcw, MapPin, Sun, Moon, Linkedin, Home, Grid
 };
 
 export default function Icon({ name, size = 20, className = '', strokeWidth = 2, ...props }) {
@@ -61,5 +64,6 @@ export {
   Mountain, Sprout, Trophy, Building2, Route, Flag, Package,
   Smile, Coins, Zap, Sparkles, Banknote, Gem, Crown, Award,
   Check, X, ChevronRight, Search, Filter, Heart, Minus, Plus,
-  Truck, RotateCcw, MapPin, Sun, Moon, Linkedin, FileText
+  Truck, RotateCcw, MapPin, Sun, Moon, Linkedin, FileText,
+  Home, Grid
 };

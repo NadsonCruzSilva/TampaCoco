@@ -2,8 +2,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ProductCard from '@/components/ProductCard';
 import Icon from '@/components/Icon';
-import { ShieldCheck, Target, HardHat, Ruler, Star, User } from '@/components/Icon';
+import { ShieldCheck, Target, HardHat, Ruler, Star } from '@/components/Icon';
 import { getFeaturedProducts, types } from '@/data/products';
+import CategoryCard from '@/components/CategoryCard';
 import styles from './page.module.css';
 
 const testimonials = [
@@ -42,7 +43,7 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.heroVisual}>
-            <div style={{ position: 'relative', width: '100%', height: '500px' }}>
+            <div className={styles.heroHelmet} style={{ position: 'relative', width: '100%', height: '500px' }}>
               <Image
                 src="/hero.png"
                 alt="Capacete de destaque"
@@ -72,33 +73,13 @@ export default function Home() {
         ))}
       </section>
 
-      {/* Categories */}
-      <section className="section container">
+      {/* Categories - alternating bg */}
+      <section className={`section container ${styles.sectionAlt}`}>
         <h2 className="section-title">Encontre por Tipo</h2>
         <p className="section-subtitle">Cada tipo de capacete foi feito para uma situação diferente</p>
         <div className={styles.categories}>
           {types.map(type => (
-            <Link key={type.id} href={`/catalogo?tipo=${type.id}`} className={styles.catCard}>
-              <div className={styles.catCardInner}>
-                <div className={styles.catCardFront}>
-                  <div className={styles.catImageWrapper}>
-                    <Image
-                      src={`/types/${type.id}.png`}
-                      alt={type.name}
-                      fill
-                      sizes="140px"
-                      style={{ objectFit: 'contain' }}
-                    />
-                  </div>
-                  <h3 className={styles.catName}>{type.name}</h3>
-                </div>
-                <div className={styles.catCardBack}>
-                  <h3 className={styles.catNameBack}>{type.name}</h3>
-                  <p className={styles.catDesc}>{type.description}</p>
-                  <span className={styles.catBtn}>Ver modelos →</span>
-                </div>
-              </div>
-            </Link>
+            <CategoryCard key={type.id} type={type} />
           ))}
         </div>
       </section>
@@ -117,8 +98,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features / Diferenciais */}
-      <section className="section container">
+      {/* Features / Diferenciais - alternating bg */}
+      <section className={`section container ${styles.sectionAlt}`}>
         <h2 className="section-title">Nossos Diferenciais</h2>
         <p className="section-subtitle">Ferramentas exclusivas para você fazer a melhor escolha</p>
         <div className={styles.features}>
@@ -161,7 +142,9 @@ export default function Home() {
               </div>
               <p className={styles.testimonialText}>&ldquo;{t.text}&rdquo;</p>
               <div className={styles.testimonialAuthor}>
-                <div className={styles.testimonialAvatar}><User size={18} /></div>
+                <div className={styles.testimonialAvatar}>
+                <span>{t.name.charAt(0)}</span>
+              </div>
                 <div>
                   <div className={styles.testimonialName}>{t.name}</div>
                   <div className={styles.testimonialInfo}>{t.info}</div>
@@ -172,9 +155,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Banner */}
       <section className="section container">
         <div className={styles.ctaBanner}>
+          <div className={styles.ctaDecor}></div>
           <h2 className={styles.ctaTitle}>Não sabe qual capacete escolher?</h2>
           <p className={styles.ctaDesc}>
             Nosso quiz inteligente analisa seu perfil em 4 perguntas e recomenda os melhores capacetes para você.

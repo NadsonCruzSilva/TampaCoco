@@ -48,19 +48,14 @@
   color: var(--accent-primary);
   margin-bottom: 1.5rem;
   opacity: 0;
-  animation: titleSpeedEntrance 0.7s cubic-bezier(0.175, 0.885, 0.32, 1) forwards;
+  animation: titleSpeedEntrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: 0.1s;
+  will-change: transform, opacity;
 }
 @keyframes titleSpeedEntrance {
   0% { 
     opacity: 0; 
     transform: translateX(-150px) skewX(-20deg); 
-    filter: blur(12px); 
-  }
-  60% { 
-    opacity: 1; 
-    transform: translateX(10px) skewX(5deg); 
-    filter: blur(0); 
   }
   100% { 
     opacity: 1; 
@@ -77,8 +72,9 @@
   letter-spacing: -0.02em;
   margin-bottom: 1.5rem;
   opacity: 0;
-  animation: titleSpeedEntrance 0.7s cubic-bezier(0.175, 0.885, 0.32, 1) forwards;
+  animation: titleSpeedEntrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: 0.2s;
+  will-change: transform, opacity;
 }
 .heroTitle span {
   background: var(--accent-gradient);
@@ -93,26 +89,22 @@
   margin-bottom: 2rem;
   max-width: 480px;
   opacity: 0;
-  animation: titleSpeedEntrance 0.7s cubic-bezier(0.175, 0.885, 0.32, 1) forwards;
+  animation: titleSpeedEntrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: 0.3s;
+  will-change: transform, opacity;
 }
 .heroBtns { 
   display: flex; gap: 1rem; flex-wrap: wrap; 
   opacity: 0;
-  animation: titleSpeedEntrance 0.7s cubic-bezier(0.175, 0.885, 0.32, 1) forwards;
+  animation: titleSpeedEntrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: 0.4s;
+  will-change: transform, opacity;
 }
 
 @keyframes visualSpeedEntrance {
   0% { 
     opacity: 0; 
     transform: translateX(150px) skewX(20deg); 
-    filter: blur(12px); 
-  }
-  60% { 
-    opacity: 1; 
-    transform: translateX(-10px) skewX(-5deg); 
-    filter: blur(0); 
   }
   100% { 
     opacity: 1; 
@@ -124,14 +116,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: visualSpeedEntrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1) forwards;
+  animation: visualSpeedEntrance 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: 0.5s;
   opacity: 0;
+  will-change: transform, opacity;
 }
 .heroHelmet {
   font-size: 14rem;
   filter: drop-shadow(0 0 60px rgba(255, 69, 0, 0.35));
-  animation: float 3s ease-in-out infinite;
+  animation: helmetFloat 4s ease-in-out infinite;
+  will-change: transform;
 }
 .stats {
   display: grid;
@@ -142,6 +136,7 @@
   padding: 0 var(--container-padding);
   position: relative;
   z-index: 2;
+  margin-bottom: 2rem;
 }
 .statCard {
   background: var(--bg-card);
@@ -183,6 +178,7 @@
   cursor: pointer;
   border-radius: var(--radius-xl);
   transform: skewX(-5deg);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .catCardInner {
@@ -195,7 +191,15 @@
   border-radius: var(--radius-xl);
 }
 
-.catCard:hover .catCardInner {
+/* Desktop: flip on hover */
+@media (hover: hover) {
+  .catCard:hover .catCardInner {
+    transform: rotateY(180deg);
+  }
+}
+
+/* JS-driven flip (for mobile tap & fallback) */
+.catCardFlipped .catCardInner {
   transform: rotateY(180deg);
 }
 
@@ -242,6 +246,14 @@
   margin-bottom: 0.5rem;
 }
 
+.catHint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+  margin-top: 0.5rem;
+  display: none;
+}
+
 .catNameBack {
   font-family: var(--font-display);
   font-size: 1.3rem;
@@ -258,9 +270,22 @@
 }
 
 .catBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--accent-primary-dark);
+  color: var(--accent-primary);
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.catBtn:hover {
+  background: var(--accent-primary);
+  color: var(--btn-accent-text);
 }
 .productGrid {
   display: grid;
@@ -316,25 +341,51 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--accent-gradient-soft);
+  background: var(--accent-gradient);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1rem;
+  color: #fff;
+  font-weight: 700;
+  font-family: var(--font-display);
+  flex-shrink: 0;
 }
 .testimonialName { font-weight: 600; font-size: 0.9rem; }
 .testimonialInfo { font-size: 0.75rem; color: var(--text-muted); }
 .ctaBanner {
-  background: var(--accent-gradient-soft);
+  background: linear-gradient(135deg, rgba(255, 69, 0, 0.15) 0%, rgba(0, 51, 160, 0.12) 100%);
   border: 1px solid var(--border-accent);
   border-radius: var(--radius-xl);
-  padding: 3rem;
+  padding: 4rem 3rem;
   text-align: center;
   max-width: var(--container-max);
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
-.ctaTitle { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 0.75rem; }
-.ctaDesc { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.ctaDecor {
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 69, 0, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.ctaBanner::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent-gradient);
+  opacity: 0.6;
+}
+.ctaTitle { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 0.75rem; position: relative; }
+.ctaDesc { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; position: relative; }
 
 /* Animated Border Shared Module */
 @property --border-angle {
@@ -348,7 +399,7 @@
   100% { --border-angle: 360deg; }
 }
 
-.statCard::after, .featureCard::after, .testimonialCard::after, .catCardFront::after, .catCardBack::after {
+.statCard::after, .featureCard::after, .testimonialCard::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -365,41 +416,272 @@
   z-index: 2;
 }
 
-.statCard:hover::after, .featureCard:hover::after, .testimonialCard:hover::after, .catCard:hover .catCardFront::after, .catCard:hover .catCardBack::after {
+.statCard:hover::after, .featureCard:hover::after, .testimonialCard:hover::after {
   opacity: 1;
   animation: racingLine 1.5s linear infinite;
 }
 
+/* ===================== RESPONSIVE ===================== */
+
 @media (max-width: 900px) {
-  .heroContent { grid-template-columns: 1fr; text-align: center; }
+  .heroContent { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
   .heroDesc { margin-left: auto; margin-right: auto; }
   .heroBtns { justify-content: center; }
   .heroVisual {
     display: flex;
-    margin-top: 1rem;
+    margin-top: 0;
     margin-bottom: 1rem;
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     margin-left: auto;
     margin-right: auto;
   }
-  .heroHelmet { font-size: 12rem; }
+  .heroHelmet { font-size: 10rem; }
   .stats { grid-template-columns: repeat(2, 1fr); margin-top: -1rem; }
   .categories { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .features { grid-template-columns: 1fr; gap: 1.5rem; }
   .testimonials { grid-template-columns: 1fr; gap: 1.5rem; }
+
+  .catHint {
+    display: block;
+  }
 }
-@media (max-width: 600px) {
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-top: 0;
+    padding-bottom: 1.5rem;
+  }
+
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: 0;
+    text-align: left;
+    position: relative;
+  }
+
+  .heroText {
+    position: relative;
+    z-index: 2;
+  }
+
+  .heroTag {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    margin-bottom: 0.75rem;
+    text-align: left;
+  }
+
+  .heroDesc {
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 70%;
+    text-align: left;
+    line-height: 1.6;
+  }
+
+  .heroBtns {
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .heroBtns > * {
+    width: auto;
+    max-width: none;
+    justify-content: center;
+    font-size: 0.85rem;
+    padding: 0.7rem 1.25rem;
+  }
+
+  /* Helmet floats as compact accent to the right */
+  .heroVisual {
+    position: absolute;
+    right: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 180px;
+    width: 180px;
+    margin: 0;
+    opacity: 0.35;
+    z-index: 1;
+    pointer-events: none;
+    animation: none;
+  }
+
+  .heroHelmet {
+    font-size: 6rem;
+    animation: none;
+    filter: drop-shadow(0 0 30px rgba(255, 69, 0, 0.25));
+  }
+
+  /* Remove skew on mobile for all cards */
+  .statCard,
+  .featureCard,
+  .testimonialCard,
+  .catCard {
+    transform: none;
+  }
+
+  .statCard > *,
+  .featureCard > *,
+  .testimonialCard > * {
+    transform: none;
+  }
+
+  .statCard:hover,
+  .featureCard:hover,
+  .testimonialCard:hover {
+    transform: none;
+  }
+
+  .stats {
+    gap: 0.75rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .statCard {
+    padding: 1rem;
+  }
+
+  .statValue {
+    font-size: 1.5rem;
+  }
+
+  .statLabel {
+    font-size: 0.75rem;
+  }
+
+  .categories {
+    gap: 0.75rem;
+  }
+
+  .catCard {
+    min-height: 220px;
+  }
+
+  .catCardFront, .catCardBack {
+    padding: 1.5rem 1rem;
+  }
+
+  .catImageWrapper {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .catName {
+    font-size: 1rem;
+  }
+
+  .featureCard {
+    padding: 1.5rem;
+  }
+
+  .testimonialCard {
+    padding: 1.5rem;
+  }
+
+  .ctaBanner {
+    padding: 2.5rem 1.5rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .ctaTitle {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+  }
+
+  .ctaDesc {
+    font-size: 0.95rem;
+  }
+
   .productGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
   }
 }
+
 @media (max-width: 480px) {
-  .heroHelmet { font-size: 9rem; }
-  .stats { grid-template-columns: 1fr; margin-top: 1rem; gap: 1rem; }
-  .categories { grid-template-columns: 1fr; }
-  .catImageWrapper { width: 100px; height: 100px; }
+  .hero {
+    padding-top: 0.5rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+  }
+
+  .heroDesc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .heroVisual {
+    max-width: 140px;
+    width: 140px;
+    right: -0.5rem;
+    opacity: 0.25;
+  }
+
+  .heroHelmet {
+    font-size: 5rem;
+  }
+
+  .heroDesc {
+    max-width: 65%;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .statCard {
+    padding: 0.85rem 0.5rem;
+  }
+
+  .statValue {
+    font-size: 1.3rem;
+  }
+
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .catCard {
+    min-height: 180px;
+  }
+
+  .catImageWrapper {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.75rem;
+  }
+
+  .catName {
+    font-size: 0.9rem;
+  }
+
+  .featureCard {
+    padding: 1.25rem;
+  }
+
+  .testimonialCard {
+    padding: 1.25rem;
+  }
+
+  .testimonialText {
+    font-size: 0.9rem;
+  }
 }
 
 @keyframes fadeIn {
@@ -407,7 +689,32 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+@keyframes helmetFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(-3deg); }
+}
+
+/* Alternating section background */
+.sectionAlt {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--container-max);
+}
+
+@media (max-width: 768px) {
+  .sectionAlt {
+    border-radius: var(--radius-lg);
+    margin-top: 1rem;
+  }
+
+  /* Disable racing-line border on mobile to prevent glitch border */
+  .statCard::after,
+  .featureCard::after,
+  .testimonialCard::after {
+    display: none;
+  }
 }

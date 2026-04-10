@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Bike, Instagram, Facebook, Youtube, Music, Lock, CreditCard, ShieldCheck, MessageCircle } from '@/components/Icon';
+import { Instagram, Facebook, Youtube, Music, Lock, CreditCard, ShieldCheck, MessageCircle } from '@/components/Icon';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -13,8 +13,8 @@ export default function Footer() {
         <div className={styles.footerGrid}>
           <div className={styles.brand}>
             <span className={styles.logo}>
-              <Bike size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.4rem' }} />
-              Mundo dos Capacetes
+              <img src="/logo.png" alt="Mundo dos Capacetes" className={styles.logoImg} />
+              <span className={styles.logoText}>Mundo dos Capacetes</span>
             </span>
             <p>
               Seu destino para capacetes com segurança, qualidade e recomendações personalizadas.
@@ -90,7 +90,7 @@ export default function Footer() {
                   e então alterar a propriedade src abaixo para "/attendant.jpg" (e usar a tag <Image> do Next).
                 */}
                 <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150&h=150"
+                  src="/attendant.jpg"
                   alt="Foto do Atendente"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />

@@ -11,11 +11,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
-  max-width: var(--container-max);
+  padding: 0.5rem 0;
+  max-width: 100%;
   margin: 0 auto;
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+  position: relative;
+  min-height: 70px;
 }
 
 .headerScrolled {
@@ -34,6 +36,13 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.logoImg {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .logoIcon {
@@ -48,6 +57,10 @@
 }
 
 .logoText {
+  font-family: var(--font-logo);
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -58,6 +71,9 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .navLink {
@@ -150,6 +166,7 @@
   transition: all var(--transition-base);
 }
 
+/* Mobile Menu - Full screen overlay with slide animation */
 .mobileMenu {
   display: none;
   position: fixed;
@@ -159,25 +176,38 @@
   bottom: 0;
   background: var(--mobile-menu-bg);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   z-index: 1001;
   padding: 5rem 2rem 2rem;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0;
   overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mobileMenuOpen {
   display: flex;
+  transform: translateX(0);
+  animation: slideInMobileMenu 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideInMobileMenu {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
 }
 
 .mobileNavLink {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--text-secondary);
-  padding: 0.75rem 0;
+  padding: 1rem 0;
   border-bottom: 1px solid var(--border-color);
   transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .mobileNavLink:hover {
@@ -190,11 +220,23 @@
   right: 1.5rem;
   font-size: 1.5rem;
   color: var(--text-secondary);
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+}
+
+/* Mobile menu section divider */
+.mobileDivider {
+  height: 8px;
+  margin: 0.5rem -2rem;
+  background: var(--bg-tertiary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* User avatar & dropdown */
@@ -252,8 +294,15 @@
 }
 
 @keyframes dropdownFadeIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .userDropdownHeader {
@@ -314,6 +363,8 @@
   background: var(--bg-tertiary);
 }
 
+/* ===================== RESPONSIVE ===================== */
+
 @media (max-width: 900px) {
   .nav {
     display: none;
@@ -324,35 +375,89 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .headerInner {
+    min-height: 60px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .logoImg {
+    height: 35px;
+  }
+
+  .logoText {
+    font-size: 1.1rem;
+  }
+
   .actions {
     gap: 0.5rem;
   }
-  
-  .iconBtn, .menuToggle {
-    width: 36px;
-    height: 36px;
+
+  .iconBtn,
+  .menuToggle {
+    width: 38px;
+    height: 38px;
     font-size: 1rem;
   }
-  
+
   .userAvatar {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     font-size: 0.9rem;
   }
 
-  .logo {
-    font-size: 1.3rem;
-  }
-  
-  .logoIcon {
-    width: 32px;
-    height: 32px;
-    font-size: 1.1rem;
-  }
-  
+  /* Hide items that are now in bottom nav */
   .hideOnMobile {
     display: none !important;
   }
+
+  .mobileMenu {
+    padding: 4.5rem 1.5rem 6rem;
+  }
+
+  .mobileNavLink {
+    font-size: 1.1rem;
+    padding: 0.85rem 0;
+  }
+
+  .mobileClose {
+    top: 1rem;
+    right: 1rem;
+  }
 }
 
+@media (max-width: 480px) {
+  .headerInner {
+    min-height: 56px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .logoImg {
+    height: 28px;
+  }
+
+  .logoText {
+    font-size: 0.95rem;
+  }
+
+  .iconBtn,
+  .menuToggle {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+
+  .userAvatar {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .logoText {
+    display: none;
+  }
+}

@@ -61,7 +61,7 @@ export default function Header() {
       <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
         <div className={styles.headerInner}>
           <Link href="/" className={styles.logo}>
-            <span className={styles.logoIcon}><Bike size={20} /></span>
+            <img src="/logo.png" alt="Mundo dos Capacetes Logo" className={styles.logoImg} />
             <span className={styles.logoText}>Mundo dos Capacetes</span>
           </Link>
 
@@ -161,8 +161,8 @@ export default function Header() {
           <Heart size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.5rem' }} />
           Favoritos {totalFavorites > 0 && `(${totalFavorites})`}
         </Link>
-        <button 
-          className={styles.mobileNavLink} 
+        <button
+          className={styles.mobileNavLink}
           onClick={() => { toggleTheme(); setMobileOpen(false); }}
           style={{ textAlign: 'left', background: 'none', border: 'none', padding: '0.75rem 0', cursor: 'pointer', fontFamily: 'inherit' }}
         >
